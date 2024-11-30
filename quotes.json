@@ -1,0 +1,477 @@
+[
+    {
+        "text": "La vie est belle.",
+        "author": "Inconnu",
+        "category": "Motivation",
+        "last_used_date": null
+    },
+    {
+        "text": "L'échec est le fondement de la réussite.",
+        "author": "Lao Tseu",
+        "category": "Philosophie",
+        "last_used_date": null
+    },
+    {
+        "text": "Le courage n'est pas l'absence de peur, mais la capacité de la vaincre.",
+        "author": "Nelson Mandela",
+        "category": "Inspiration",
+        "last_used_date": null
+    },
+    {
+        "text": "Ce n'est pas parce que les choses sont difficiles que nous n'osons pas, c'est parce que nous n'osons pas qu'elles sont difficiles.",
+        "author": "Sénèque",
+        "category": "Motivation",
+        "last_used_date": null
+    },
+    {
+        "text": "Le bonheur n'est pas quelque chose de prêt à l'emploi. Il découle de vos propres actions.",
+        "author": "Dalaï Lama",
+        "category": "Bonheur",
+        "last_used_date": null
+    },
+    {
+        "text": "Le succès est la somme de petits efforts répétés jour après jour.",
+        "author": "Robert Collier",
+        "category": "Motivation",
+        "last_used_date": null
+    },
+    {
+        "text": "L'éducation est l'arme la plus puissante pour changer le monde.",
+        "author": "Nelson Mandela",
+        "category": "Éducation",
+        "last_used_date": null
+    },
+    {
+        "text": "La meilleure façon de prédire l'avenir est de le créer.",
+        "author": "Peter Drucker",
+        "category": "Inspiration",
+        "last_used_date": null
+    },
+    {
+        "text": "Ne crains pas d’échouer, crains de ne pas essayer.",
+        "author": "Inconnu",
+        "category": "Motivation",
+        "last_used_date": null
+    },
+    {
+        "text": "L'imagination est plus importante que le savoir.",
+        "author": "Albert Einstein",
+        "category": "Créativité",
+        "last_used_date": null
+    },
+    {
+        "text": "Soyez vous-même, tous les autres sont déjà pris.",
+        "author": "Oscar Wilde",
+        "category": "Inspiration",
+        "last_used_date": null
+    },
+    {
+        "text": "Le temps que vous aimez perdre n'est pas du temps perdu.",
+        "author": "Bertrand Russell",
+        "category": "Philosophie",
+        "last_used_date": null
+    },
+    {
+        "text": "Rien n'est permanent, sauf le changement.",
+        "author": "Héraclite",
+        "category": "Philosophie",
+        "last_used_date": null
+    },
+    {
+        "text": "Il est toujours temps de devenir ce que nous aurions pu être.",
+        "author": "George Eliot",
+        "category": "Motivation",
+        "last_used_date": null
+    },
+    {
+        "text": "Le bonheur est un voyage, pas une destination.",
+        "author": "Inconnu",
+        "category": "Bonheur",
+        "last_used_date": null
+    },
+    {
+        "text": "L'esprit qui s'ouvre à une nouvelle idée ne revient jamais à sa taille d'origine.",
+        "author": "Albert Einstein",
+        "category": "Inspiration",
+        "last_used_date": null
+    },
+    {
+        "text": "Tout ce que vous pouvez imaginer est réel.",
+        "author": "Pablo Picasso",
+        "category": "Créativité",
+        "last_used_date": null
+    },
+    {
+        "text": "Le seul moyen de faire du bon travail est d’aimer ce que vous faites.",
+        "author": "Steve Jobs",
+        "category": "Motivation",
+        "last_used_date": null
+    },
+    {
+        "text": "Celui qui ouvre une porte d'école ferme une prison.",
+        "author": "Victor Hugo",
+        "category": "Éducation",
+        "last_used_date": null
+    },
+    {
+        "text": "Les grandes choses ne se font pas par impulsion, mais par une série de petites choses assemblées.",
+        "author": "Vincent Van Gogh",
+        "category": "Motivation",
+        "last_used_date": null
+    },
+    {
+        "text": "La simplicité est la sophistication suprême.",
+        "author": "Léonard de Vinci",
+        "category": "Philosophie",
+        "last_used_date": null
+    },
+    {
+        "text": "Tout le monde pense à changer le monde, mais personne ne pense à se changer lui-même.",
+        "author": "Léon Tolstoï",
+        "category": "Réflexion",
+        "last_used_date": null
+    },
+    {
+        "text": "Ceux qui ne se souviennent pas du passé sont condamnés à le répéter.",
+        "author": "George Santayana",
+        "category": "Histoire",
+        "last_used_date": null
+    },
+    {
+        "text": "Il n'y a qu'une seule façon d'éviter les critiques : ne rien faire, ne rien dire, et n'être rien.",
+        "author": "Aristote",
+        "category": "Motivation",
+        "last_used_date": null
+    },
+    {
+        "text": "Soyez le changement que vous voulez voir dans le monde.",
+        "author": "Mahatma Gandhi",
+        "category": "Inspiration",
+        "last_used_date": null
+    },
+    {
+        "text": "L'esprit est comme un parachute, il fonctionne mieux quand il est ouvert.",
+        "author": "Frank Zappa",
+        "category": "Créativité",
+        "last_used_date": null
+    },
+    {
+        "text": "Un voyage de mille lieues commence toujours par un premier pas.",
+        "author": "Lao Tseu",
+        "category": "Motivation",
+        "last_used_date": null
+    },
+    {
+        "text": "Le bonheur est réel seulement quand il est partagé.",
+        "author": "Christopher McCandless",
+        "category": "Bonheur",
+        "last_used_date": null
+    },
+    {
+        "text": "Ce que l'on conçoit bien s'énonce clairement, et les mots pour le dire arrivent aisément.",
+        "author": "Nicolas Boileau",
+        "category": "Clarté",
+        "last_used_date": null
+    },
+    {
+        "text": "La vraie générosité envers l'avenir consiste à tout donner au présent.",
+        "author": "Albert Camus",
+        "category": "Philosophie",
+        "last_used_date": null
+    },
+    {
+        "text": "La vie est un mystère qu'il faut vivre, et non un problème à résoudre.",
+        "author": "Gandhi",
+        "category": "Philosophie",
+        "last_used_date": null
+    },
+    {
+        "text": "La seule chose que nous ayons à craindre, c'est la peur elle-même.",
+        "author": "Franklin D. Roosevelt",
+        "category": "Motivation",
+        "last_used_date": null
+    },
+    {
+        "text": "La seule façon de faire du bon travail est d'aimer ce que vous faites.",
+        "author": "Steve Jobs",
+        "category": "Motivation",
+        "last_used_date": null
+    },
+    {
+        "text": "La seule limite à notre réalisation de demain sera nos doutes d'aujourd'hui.",
+        "author": "Franklin D. Roosevelt",
+        "category": "Motivation",
+        "last_used_date": null
+    },
+    {
+        "text": "La seule chose qui se trouve entre vous et votre rêve, c'est l'histoire que vous racontez à vous-même.",
+        "author": "Jordan Belfort",
+        "category": "Motivation",
+        "last_used_date": null
+    },
+    {
+        "text": "La seule façon de prédire l'avenir est de le créer.",
+        "author": "Peter Drucker",
+        "category": "Inspiration",
+        "last_used_date": null
+    },
+    {
+        "text": "La seule façon de faire du bon travail est d'aimer ce que vous faites.",
+        "author": "Steve Jobs",
+        "category": "Motivation",
+        "last_used_date": null
+    },
+    {
+        "text": "La seule limite à notre réalisation de demain sera nos doutes d'aujourd'hui.",
+        "author": "Franklin D. Roosevelt",
+        "category": "Motivation",
+        "last_used_date": null
+    },
+    {
+        "text": "La seule chose qui se trouve entre vous et votre rêve, c'est l'histoire que vous racontez à vous-même.",
+        "author": "Jordan Belfort",
+        "category": "Motivation",
+        "last_used_date": null
+    },
+    {
+        "text": "La vie, c’est comme une bicyclette, il faut avancer pour ne pas perdre l’équilibre.",
+        "author": "Albert Einstein",
+        "category": "Inspiration",
+        "last_used_date": null
+    },
+    {
+        "text": "Le véritable voyage de découverte ne consiste pas à chercher de nouveaux paysages, mais à avoir de nouveaux yeux.",
+        "author": "Marcel Proust",
+        "category": "Réflexion",
+        "last_used_date": null
+    },
+    {
+        "text": "Apprends comme si tu devais vivre pour toujours, vis comme si tu devais mourir demain.",
+        "author": "Mahatma Gandhi",
+        "category": "Éducation",
+        "last_used_date": null
+    },
+    {
+        "text": "Ce n'est pas ce que vous regardez qui compte, c'est ce que vous voyez.",
+        "author": "Henry David Thoreau",
+        "category": "Réflexion",
+        "last_used_date": null
+    },
+    {
+        "text": "Il n'y a qu'une réussite : être capable de vivre sa vie à sa manière.",
+        "author": "Christopher Morley",
+        "category": "Bonheur",
+        "last_used_date": null
+    },
+    {
+        "text": "Ce qui ne nous tue pas nous rend plus forts.",
+        "author": "Friedrich Nietzsche",
+        "category": "Motivation",
+        "last_used_date": null
+    },
+    {
+        "text": "Si tu veux aller vite, marche seul. Si tu veux aller loin, marche ensemble.",
+        "author": "Proverbe africain",
+        "category": "Inspiration",
+        "last_used_date": null
+    },
+    {
+        "text": "La patience est amère, mais son fruit est doux.",
+        "author": "Jean-Jacques Rousseau",
+        "category": "Philosophie",
+        "last_used_date": null
+    },
+    {
+        "text": "Les opportunités ne se produisent pas. Vous les créez.",
+        "author": "Chris Grosser",
+        "category": "Motivation",
+        "last_used_date": null
+    },
+    {
+        "text": "Faites toujours de votre mieux. Ce que vous plantez maintenant, vous le récolterez plus tard.",
+        "author": "Og Mandino",
+        "category": "Inspiration",
+        "last_used_date": null
+    },
+    {
+        "text": "On ne voit bien qu’avec le cœur. L’essentiel est invisible pour les yeux.",
+        "author": "Antoine de Saint-Exupéry",
+        "category": "Réflexion",
+        "last_used_date": null
+    },
+    {
+        "text": "Chaque difficulté rencontrée doit être l’occasion d’un nouveau progrès.",
+        "author": "Pierre de Coubertin",
+        "category": "Motivation",
+        "last_used_date": null
+    },
+    {
+        "text": "L’art de la réussite consiste à savoir s’entourer des meilleurs.",
+        "author": "John Fitzgerald Kennedy",
+        "category": "Inspiration",
+        "last_used_date": null
+    },
+    {
+        "text": "La liberté commence là où l’ignorance finit.",
+        "author": "Victor Hugo",
+        "category": "Philosophie",
+        "last_used_date": null
+    },
+    {
+        "text": "Tout est possible à qui rêve, ose, travaille et n’abandonne jamais.",
+        "author": "Xavier Dolan",
+        "category": "Motivation",
+        "last_used_date": null
+    },
+    {
+        "text": "La beauté commence au moment où vous décidez d’être vous-même.",
+        "author": "Coco Chanel",
+        "category": "Inspiration",
+        "last_used_date": null
+    },
+    {
+        "text": "Le plus grand échec est de ne pas avoir le courage d’oser.",
+        "author": "Abraham Lincoln",
+        "category": "Motivation",
+        "last_used_date": null
+    },
+    {
+        "text": "L’esprit humain, une fois étiré par une idée nouvelle, ne revient jamais à ses dimensions initiales.",
+        "author": "Oliver Wendell Holmes",
+        "category": "Créativité",
+        "last_used_date": null
+    },
+    {
+        "text": "Le bonheur ne se trouve pas au sommet de la montagne, mais dans la façon de la gravir.",
+        "author": "Confucius",
+        "category": "Philosophie",
+        "last_used_date": null
+    },
+    {
+        "text": "Rien n’est jamais acquis, il faut le mériter chaque jour.",
+        "author": "André Gide",
+        "category": "Réflexion",
+        "last_used_date": null
+    },
+    {
+        "text": "Les seules limites de nos réalisations de demain, ce sont nos doutes d’aujourd’hui.",
+        "author": "Franklin D. Roosevelt",
+        "category": "Motivation",
+        "last_used_date": null
+    },
+    {
+        "text": "Agissez comme s’il était impossible d’échouer.",
+        "author": "Winston Churchill",
+        "category": "Inspiration",
+        "last_used_date": null
+    },
+    {
+        "text": "Votre temps est limité, ne le gâchez pas en menant une existence qui n’est pas la vôtre.",
+        "author": "Steve Jobs",
+        "category": "Motivation",
+        "last_used_date": null
+    },
+    {
+        "text": "Rêvez grand et osez échouer.",
+        "author": "Norman Vaughan",
+        "category": "Inspiration",
+        "last_used_date": null
+    },
+    {
+        "text": "Il faut viser la lune, parce qu’au moins, si vous échouez, vous finirez dans les étoiles.",
+        "author": "Oscar Wilde",
+        "category": "Motivation",
+        "last_used_date": null
+    },
+    {
+        "text": "La vie n’est pas d’attendre que l’orage passe, mais d’apprendre à danser sous la pluie.",
+        "author": "Vivian Greene",
+        "category": "Inspiration",
+        "last_used_date": null
+    },
+    {
+        "text": "Faites de votre vie un rêve, et d’un rêve, une réalité.",
+        "author": "Antoine de Saint-Exupéry",
+        "category": "Motivation",
+        "last_used_date": null
+    },
+    {
+        "text": "La différence entre un rêve et un projet, c’est une date.",
+        "author": "Walt Disney",
+        "category": "Motivation",
+        "last_used_date": null
+    },
+    {
+        "text": "Ce n’est pas la force, mais la persévérance, qui fait les grandes œuvres.",
+        "author": "Samuel Johnson",
+        "category": "Motivation",
+        "last_used_date": null
+    },
+    {
+        "text": "Si vous tombez sept fois, relevez-vous huit fois.",
+        "author": "Proverbe japonais",
+        "category": "Motivation",
+        "last_used_date": null
+    },
+    {
+        "text": "Le secret pour aller de l’avant, c’est de commencer.",
+        "author": "Mark Twain",
+        "category": "Motivation",
+        "last_used_date": null
+    },
+    {
+        "text": "Le futur appartient à ceux qui croient à la beauté de leurs rêves.",
+        "author": "Eleanor Roosevelt",
+        "category": "Inspiration",
+        "last_used_date": null
+    },
+    {
+        "text": "Commencez où vous êtes, utilisez ce que vous avez, faites ce que vous pouvez.",
+        "author": "Arthur Ashe",
+        "category": "Motivation",
+        "last_used_date": null
+    },
+    {
+        "text": "Vous ne pouvez pas changer votre avenir, mais vous pouvez changer vos habitudes, et vos habitudes changeront votre avenir.",
+        "author": "A.P.J. Abdul Kalam",
+        "category": "Réflexion",
+        "last_used_date": null
+    },
+    {
+        "text": "La réussite est liée à l’action. Les hommes qui réussissent continuent à bouger.",
+        "author": "Conrad Hilton",
+        "category": "Motivation",
+        "last_used_date": null
+    },
+    {
+        "text": "Le plus grand risque est de ne prendre aucun risque.",
+        "author": "Mark Zuckerberg",
+        "category": "Inspiration",
+        "last_used_date": null
+    },
+    {
+        "text": "Si vous voulez accomplir quelque chose que vous n’avez jamais fait, vous devez être prêt à faire quelque chose que vous n’avez jamais essayé.",
+        "author": "Thomas Jefferson",
+        "category": "Motivation",
+        "last_used_date": null
+    },
+    {
+        "text": "Ne regardez pas l’escalier tout entier, concentrez-vous sur la première marche.",
+        "author": "Martin Luther King Jr.",
+        "category": "Motivation",
+        "last_used_date": null
+    },
+    {
+        "text": "Vos rêves n’ont pas de date d’expiration. Respirez profondément et essayez à nouveau.",
+        "author": "Inconnu",
+        "category": "Inspiration",
+        "last_used_date": null
+    },
+    {
+        "text": "Le succès n’est pas final, l’échec n’est pas fatal : c’est le courage de continuer qui compte.",
+        "author": "Winston Churchill",
+        "category": "Motivation",
+        "last_used_date": null
+    }   
+
+]

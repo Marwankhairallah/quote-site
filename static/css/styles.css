@@ -2,65 +2,52 @@ body {
     font-family: Arial, sans-serif;
     margin: 20px;
     padding: 20px;
-    background-color: #f4f4f4;
+    background-color: #f9f9f9;
 }
-.container {
-    max-width: 600px;
-    margin: auto;
-    background: white;
+
+h1 {
+    text-align: center;
+    color: #333;
+}
+
+#quote-container {
+    margin: 20px auto;
     padding: 20px;
+    background: #fff;
     border-radius: 8px;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
 }
-.quote {
-    font-size: 20px;
-    font-style: italic;
-    color: #555;
-    margin-bottom: 10px;
-}
-.author {
-    text-align: right;
-    font-size: 16px;
-    color: #888;
-}
-.rating span {
-    font-size: 25px;
-    cursor: pointer;
-    color: #ddd;
-}
-.rating span:hover,
-.rating span.filled {
-    color: gold;
-}
-#message {
-    margin-top: 10px;
-    font-weight: bold;
-}
-#message.success {
-    color: green;
-}
-#message.error {
-    color: red;
-}
-#comments-section {
+
+#rating-container {
     margin-top: 20px;
+    text-align: center;
 }
-#comments-section h3 {
-    margin-bottom: 10px;
-}
-#comments-list {
-    list-style-type: none;
-    padding: 0;
-}
-#comments-list li {
-    border-bottom: 1px solid #ddd;
-    margin-bottom: 10px;
-    padding-bottom: 5px;
-}
-#share-section {
+
+#comment-container {
     margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
-#share-section button {
-    margin-right: 10px;
+
+textarea {
+    width: 80%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    margin-bottom: 10px;
+}
+
+button {
+    padding: 10px 20px;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 4px;
     cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3;
 }
