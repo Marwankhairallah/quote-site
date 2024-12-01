@@ -17,25 +17,24 @@ h1 {
     border-radius: 8px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     text-align: center;
+    font-size: 1.5rem;
+    color: #555;
 }
 
-.stars {
-    display: flex;
-    justify-content: center;
+#rating-container {
     margin-top: 20px;
+    text-align: center;
 }
 
 .star {
-    font-size: 30px;
-    color: #ccc;
+    font-size: 2rem;
+    color: #ccc; /* Couleur par défaut */
     cursor: pointer;
-    margin: 0 5px;
-    transition: color 0.3s;
+    transition: color 0.2s;
 }
 
-.star:hover,
 .star.active {
-    color: #FFD700;
+    color: #FFD700; /* Couleur jaune */
 }
 
 #comment-container {
@@ -66,9 +65,9 @@ button:hover {
     background-color: #0056b3;
 }
 
-#comments-list {
+#comments-section {
     margin-top: 20px;
-    padding: 10px;
+    padding: 20px;
     background: #fff;
     border-radius: 8px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
