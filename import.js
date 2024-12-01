@@ -12,15 +12,8 @@ const firebaseConfig = {
     measurementId: "G-WKZNTYXB58"
   };
 
-// Vérifier si Firebase est déjà initialisé
-let app;
-if (!firebase.apps || firebase.apps.length === 0) {
-    app = initializeApp(firebaseConfig);
-} else {
-    app = firebase.apps[0];
-}
-
-// Initialiser Firestore
+// Initialiser Firebase
+const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
 // Fonction d'importation des citations
