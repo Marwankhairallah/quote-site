@@ -19,16 +19,20 @@ h1 {
     text-align: center;
 }
 
-.stars {
-    display: inline-block;
-    cursor: pointer;
+.star {
     font-size: 24px;
-    color: #ccc;
+    color: gray;
+    cursor: pointer;
 }
 
-.stars .star.active {
+.star.hovered {
     color: gold;
 }
+
+.star.selected {
+    color: gold;
+}
+
 
 #rating-container {
     margin-top: 20px;

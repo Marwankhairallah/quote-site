@@ -82,6 +82,7 @@ const initializeStars = () => {
     document.getElementById("rating-container").appendChild(ratingMessage);
 
     stars.forEach((star, index) => {
+        // Gestion du survol des étoiles
         star.addEventListener("mouseover", () => {
             stars.forEach((s, i) => s.classList.toggle("hovered", i <= index));
         });
@@ -90,6 +91,7 @@ const initializeStars = () => {
             stars.forEach((s) => s.classList.remove("hovered"));
         });
 
+        // Gestion du clic pour noter
         star.addEventListener("click", async () => {
             const rating = index + 1;
 
@@ -99,7 +101,7 @@ const initializeStars = () => {
             }
 
             // Vérifier si l'utilisateur a déjà noté cette citation
-            const ratingsCollection = collection(db, "notes");
+            const ratingsCollection = collection(db, "ratings");
             const q = query(ratingsCollection, where("quoteId", "==", currentQuoteId), where("userId", "==", userId));
             const querySnapshot = await getDocs(q);
 
@@ -117,7 +119,7 @@ const initializeStars = () => {
                     timestamp: new Date()
                 });
 
-                // Afficher le message de confirmation
+                // Afficher la confirmation et allumer les étoiles
                 ratingMessage.innerText = `Merci pour votre note de ${rating} étoile(s) !`;
                 stars.forEach((s, i) => s.classList.toggle("selected", i <= index));
             } catch (error) {
