@@ -1,6 +1,6 @@
 {
   "hosting": {
-    "public": ".",
+    "public": "static",
     "ignore": [
       "firebase.json",
       "**/.*",
@@ -8,20 +8,11 @@
     ],
     "headers": [
       {
-        "source": "**/*.@(js)",
+        "source": "**/*.@(js|css|html)",
         "headers": [
           {
             "key": "Content-Type",
             "value": "application/javascript"
-          }
-        ]
-      },
-      {
-        "source": "**/*.@(css|html|json)",
-        "headers": [
-          {
-            "key": "Cache-Control",
-            "value": "no-cache"
           }
         ]
       }
@@ -34,6 +25,3 @@
     ]
   }
 }
-
-
-
