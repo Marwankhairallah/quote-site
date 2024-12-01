@@ -1,3 +1,4 @@
+/* Corps */
 body {
     font-family: Arial, sans-serif;
     margin: 20px;
@@ -10,6 +11,7 @@ h1 {
     color: #333;
 }
 
+/* Conteneur de la citation */
 #quote-container {
     margin: 20px auto;
     padding: 20px;
@@ -24,17 +26,24 @@ h1 {
     text-align: center;
 }
 
-.star {
+/* Étoiles */
+#stars {
+    display: inline-block;
     font-size: 2rem;
-    color: gray;
+    color: #ddd;
     cursor: pointer;
 }
 
-.star:hover,
-.star.selected {
-    color: gold;
+#stars span {
+    color: #FFD700; /* Doré pour les étoiles actives */
 }
 
+#stars span:hover,
+#stars span:hover ~ span {
+    color: #FFD700; /* Étoiles dorées au survol */
+}
+
+/* Conteneur des commentaires */
 #comment-container {
     margin-top: 20px;
     display: flex;
@@ -63,8 +72,10 @@ button:hover {
     background-color: #0056b3;
 }
 
-#comments-section {
+/* Section des commentaires */
+#comments-section h2 {
     margin-top: 30px;
+    text-align: center;
 }
 
 #comments-list {
@@ -73,8 +84,9 @@ button:hover {
 }
 
 #comments-list li {
-    background: #f4f4f4;
-    margin: 10px 0;
+    background: #fff;
+    margin: 10px auto;
     padding: 10px;
-    border-radius: 4px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
