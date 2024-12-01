@@ -24,6 +24,17 @@ h1 {
     text-align: center;
 }
 
+.star {
+    font-size: 2rem;
+    color: gray;
+    cursor: pointer;
+}
+
+.star:hover,
+.star.selected {
+    color: gold;
+}
+
 #comment-container {
     margin-top: 20px;
     display: flex;
@@ -50,4 +61,20 @@ button {
 
 button:hover {
     background-color: #0056b3;
+}
+
+#comments-section {
+    margin-top: 30px;
+}
+
+#comments-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+#comments-list li {
+    background: #f4f4f4;
+    margin: 10px 0;
+    padding: 10px;
+    border-radius: 4px;
 }
