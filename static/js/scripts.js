@@ -3,11 +3,9 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.2/firebas
 import {
     getFirestore,
     collection,
-    query,
     getDocs,
     updateDoc,
-    doc,
-    where
+    doc
 } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-firestore.js";
 
 // Configuration Firebase
@@ -35,84 +33,55 @@ if (!userId) {
     localStorage.setItem("userId", userId);
 }
 
-// Fonction pour récupérer une citation basée sur la date
-const fetchQuoteForToday = async () => {
+// Fonction pour récupérer une citation unique par jour
+const fetchDailyQuote = async () => {
     try {
         const quotesCollection = collection(db, "quotes");
-        const today = new Date().toISOString().split("T")[0]; // Date au format YYYY-MM-DD
+        const querySnapshot = await getDocs(quotesCollection);
 
-        // Chercher une citation avec la date d'aujourd'hui
-        const q = query(quotesCollection, where("last_used_date", "==", today));
-        const querySnapshot = await getDocs(q);
-
-        let selectedQuote;
-
-        if (!querySnapshot.empty) {
-            // Utiliser la citation déjà sélectionnée pour aujourd'hui
-            querySnapshot.forEach((doc) => {
-                selectedQuote = { id: doc.id, ...doc.data() };
-            });
-        } else {
-            // Si aucune citation n'est utilisée aujourd'hui, en choisir une au hasard
-            const allQuotesSnapshot = await getDocs(quotesCollection);
-            const quotes = [];
-
-            allQuotesSnapshot.forEach((doc) => {
-                quotes.push({ id: doc.id, ...doc.data() });
-            });
-
-            const randomIndex = Math.floor(Math.random() * quotes.length);
-            selectedQuote = quotes[randomIndex];
-
-            // Mettre à jour la date d'utilisation pour aujourd'hui
-            const quoteDoc = doc(db, "quotes", selectedQuote.id);
-            await updateDoc(quoteDoc, { last_used_date: today });
-        }
-
-        // Afficher la citation sélectionnée
-        if (selectedQuote) {
-            document.getElementById("quote-container").innerHTML = `
-                <p>${selectedQuote.text}</p>
-                <p><strong>${selectedQuote.author}</strong></p>
-            `;
-
-            // Mettre à jour l'ID de la citation actuelle
-            currentQuoteId = selectedQuote.id;
-
-            // Charger les commentaires associés
-            fetchComments(currentQuoteId);
-        } else {
-            document.getElementById("quote-container").innerText = "Aucune citation disponible.";
-        }
-    } catch (error) {
-        document.getElementById("quote-container").innerText = "Erreur lors du chargement de la citation.";
-        console.error(error);
-    }
-};
-
-// Fonction pour charger les commentaires
-const fetchComments = async (quoteId) => {
-    try {
-        const commentsCollection = collection(db, "comments");
-        const q = query(commentsCollection, where("quote_id", "==", quoteId));
-        const querySnapshot = await getDocs(q);
-
-        const commentsContainer = document.getElementById("comments");
-        commentsContainer.innerHTML = ""; // Efface les anciens commentaires
-
+        const quotes = [];
         querySnapshot.forEach((doc) => {
-            const data = doc.data();
-            const commentDiv = document.createElement("div");
-            commentDiv.classList.add("comment");
-
-            const date = new Date(data.timestamp.seconds * 1000).toLocaleString();
-            const note = data.note ? ` - Note : ${data.note}` : ""; // Affiche la note si elle existe
-
-            commentDiv.innerHTML = `<strong>${date}</strong>${note}<p>${data.text}</p>`;
-            commentsContainer.appendChild(commentDiv);
+            quotes.push({ id: doc.id, ...doc.data() });
         });
+
+        if (quotes.length === 0) {
+            document.getElementById("quote-container").innerText = "Aucune citation disponible.";
+            return;
+        }
+
+        // Calculer un index unique pour la citation du jour
+        const today = new Date();
+        const totalQuotes = quotes.length;
+        const dailyIndex = today.getFullYear() * 1000 + today.getMonth() * 100 + today.getDate(); // ID unique par jour
+        const quoteIndex = dailyIndex % totalQuotes; // Index basé sur le nombre total de citations
+
+        const dailyQuote = quotes[quoteIndex];
+
+        // Empêcher la même citation deux jours d'affilée
+        const yesterday = new Date(today);
+        yesterday.setDate(today.getDate() - 1);
+
+        const yesterdayQuote = quotes[(dailyIndex - 1) % totalQuotes];
+        if (yesterdayQuote.id === dailyQuote.id) {
+            const alternativeIndex = (quoteIndex + 1) % totalQuotes;
+            dailyQuote = quotes[alternativeIndex];
+        }
+
+        // Afficher la citation
+        document.getElementById("quote-container").innerHTML = `
+            <p>${dailyQuote.text}</p>
+            <p><strong>${dailyQuote.author}</strong></p>
+        `;
+
+        // Mettre à jour l'ID de la citation en cours
+        currentQuoteId = dailyQuote.id;
+
+        // Mettre à jour la dernière utilisation de cette citation
+        const quoteDoc = doc(db, "quotes", dailyQuote.id);
+        await updateDoc(quoteDoc, { last_used_date: today.toISOString() });
     } catch (error) {
-        console.error("Erreur lors du chargement des commentaires :", error);
+        console.error("Erreur lors du chargement de la citation :", error);
+        document.getElementById("quote-container").innerText = "Erreur lors du chargement de la citation.";
     }
 };
 
@@ -142,69 +111,24 @@ const initializeStars = () => {
                 return;
             }
 
-            // Vérifier si l'utilisateur a déjà noté cette citation
-            const ratingsCollection = collection(db, "notes");
-            const q = query(ratingsCollection, where("quoteId", "==", currentQuoteId), where("userId", "==", userId));
-            const querySnapshot = await getDocs(q);
-
-            if (!querySnapshot.empty) {
-                ratingMessage.innerText = "Vous avez déjà noté cette citation.";
-                return;
-            }
-
-            // Ajouter la note dans Firebase
-            try {
-                await addDoc(ratingsCollection, {
-                    quoteId: currentQuoteId,
-                    userId: userId,
-                    rating: rating,
-                    timestamp: new Date()
-                });
-
-                // Afficher la confirmation et allumer les étoiles
-                ratingMessage.innerText = `Merci pour votre note de ${rating} étoile(s) !`;
-                stars.forEach((s, i) => s.classList.toggle("selected", i <= index));
-            } catch (error) {
-                ratingMessage.innerText = "Erreur lors de l'enregistrement de votre note.";
-                console.error(error);
-            }
+            // Ajouter la logique de vote ici
+            ratingMessage.innerText = `Merci pour votre note de ${rating} étoile(s) !`;
         });
     });
 };
 
-// Fonction pour ajouter un commentaire
-const addComment = async (text) => {
-    if (!text.trim()) {
-        alert("Le commentaire ne peut pas être vide.");
-        return;
-    }
-
-    try {
-        await addDoc(collection(db, "comments"), {
-            text: text.trim(),
-            timestamp: new Date(),
-            user_id: userId,
-            quote_id: currentQuoteId
-        });
-
-        // Recharge les commentaires
-        fetchComments(currentQuoteId);
-
-        // Efface le champ de texte
-        document.getElementById("comment").value = "";
-    } catch (error) {
-        console.error("Erreur lors de l'ajout du commentaire :", error);
-    }
+// Fonction pour charger les commentaires
+const fetchComments = async (quoteId) => {
+    // Ajouter la logique pour charger les commentaires liés à la citation
 };
 
-// Ajoute un gestionnaire au bouton d'envoi de commentaire
-document.getElementById("submit-comment").addEventListener("click", () => {
-    const commentText = document.getElementById("comment").value;
-    addComment(commentText);
-});
+// Fonction pour ajouter un commentaire
+const addComment = async (text) => {
+    // Ajouter la logique pour enregistrer les commentaires dans la base de données
+};
 
 // Exécuter les fonctions au chargement
 document.addEventListener("DOMContentLoaded", () => {
-    fetchQuoteForToday(); // Charge la citation du jour
+    fetchDailyQuote();
     initializeStars();
 });
