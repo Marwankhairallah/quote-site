@@ -12,25 +12,31 @@ const firebaseConfig = {
     measurementId: "G-WKZNTYXB58"
   };
 
-  // Initialize Firebase
-  const app = initializeApp(firebaseConfig);
-  const analytics = getAnalytics(app);
+// Vérifier si Firebase est déjà initialisé
+let app;
+if (!firebase.apps || firebase.apps.length === 0) {
+    app = initializeApp(firebaseConfig);
+} else {
+    app = firebase.apps[0];
+}
 
-// Fonction pour charger les citations depuis quotes.json et les importer dans Firestore
+// Initialiser Firestore
+const db = getFirestore(app);
+
+// Fonction d'importation des citations
 const importQuotes = async () => {
     try {
-        // Charger le fichier JSON local
         const response = await fetch('./quotes.json');
         const quotes = await response.json();
 
-        // Ajouter chaque citation dans Firestore
         for (let quote of quotes) {
             await addDoc(collection(db, "quotes"), {
                 ...quote,
-                last_used_date: quote.last_used_date || null // Par précaution
+                last_used_date: quote.last_used_date || null
             });
             console.log(`Citation ajoutée : ${quote.text}`);
         }
+
         console.log("Toutes les citations ont été importées avec succès !");
     } catch (error) {
         console.error("Erreur lors de l'importation :", error);
