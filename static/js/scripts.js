@@ -4,12 +4,10 @@ import {
     getFirestore,
     collection,
     query,
-    where,
     getDocs,
-    addDoc,
     updateDoc,
     doc,
-    serverTimestamp
+    where
 } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-firestore.js";
 
 // Configuration Firebase
@@ -37,53 +35,84 @@ if (!userId) {
     localStorage.setItem("userId", userId);
 }
 
-// Fonction pour récupérer une citation aléatoire
-const fetchRandomQuote = async () => {
+// Fonction pour récupérer une citation basée sur la date
+const fetchQuoteForToday = async () => {
     try {
         const quotesCollection = collection(db, "quotes");
+        const today = new Date().toISOString().split("T")[0]; // Date au format YYYY-MM-DD
 
-        // Charger toutes les citations sauf celle utilisée hier
-        const now = new Date();
-        const yesterday = new Date();
-        yesterday.setDate(now.getDate() - 1);
+        // Chercher une citation avec la date d'aujourd'hui
+        const q = query(quotesCollection, where("last_used_date", "==", today));
+        const querySnapshot = await getDocs(q);
 
-        const querySnapshot = await getDocs(quotesCollection);
-        const quotes = [];
+        let selectedQuote;
 
-        querySnapshot.forEach((doc) => {
-            const data = doc.data();
-            if (!data.last_used_date || new Date(data.last_used_date) < yesterday) {
-                quotes.push({ id: doc.id, ...data });
-            }
-        });
+        if (!querySnapshot.empty) {
+            // Utiliser la citation déjà sélectionnée pour aujourd'hui
+            querySnapshot.forEach((doc) => {
+                selectedQuote = { id: doc.id, ...doc.data() };
+            });
+        } else {
+            // Si aucune citation n'est utilisée aujourd'hui, en choisir une au hasard
+            const allQuotesSnapshot = await getDocs(quotesCollection);
+            const quotes = [];
 
-        if (quotes.length === 0) {
-            document.getElementById("quote-container").innerText = "Aucune citation disponible.";
-            return;
+            allQuotesSnapshot.forEach((doc) => {
+                quotes.push({ id: doc.id, ...doc.data() });
+            });
+
+            const randomIndex = Math.floor(Math.random() * quotes.length);
+            selectedQuote = quotes[randomIndex];
+
+            // Mettre à jour la date d'utilisation pour aujourd'hui
+            const quoteDoc = doc(db, "quotes", selectedQuote.id);
+            await updateDoc(quoteDoc, { last_used_date: today });
         }
 
-        // Sélectionner une citation aléatoire
-        const randomIndex = Math.floor(Math.random() * quotes.length);
-        const randomQuote = quotes[randomIndex];
+        // Afficher la citation sélectionnée
+        if (selectedQuote) {
+            document.getElementById("quote-container").innerHTML = `
+                <p>${selectedQuote.text}</p>
+                <p><strong>${selectedQuote.author}</strong></p>
+            `;
 
-        // Afficher la citation
-        document.getElementById("quote-container").innerHTML = `
-            <p>${randomQuote.text}</p>
-            <p><strong>${randomQuote.author}</strong></p>
-        `;
+            // Mettre à jour l'ID de la citation actuelle
+            currentQuoteId = selectedQuote.id;
 
-        // Mettre à jour l'ID de la citation en cours
-        currentQuoteId = randomQuote.id;
-
-        // Mettre à jour last_used_date pour cette citation
-        const quoteDoc = doc(db, "quotes", randomQuote.id);
-        await updateDoc(quoteDoc, { last_used_date: now.toISOString() });
-
-        // Charger les commentaires pour cette citation
-        fetchComments(currentQuoteId);
+            // Charger les commentaires associés
+            fetchComments(currentQuoteId);
+        } else {
+            document.getElementById("quote-container").innerText = "Aucune citation disponible.";
+        }
     } catch (error) {
         document.getElementById("quote-container").innerText = "Erreur lors du chargement de la citation.";
         console.error(error);
+    }
+};
+
+// Fonction pour charger les commentaires
+const fetchComments = async (quoteId) => {
+    try {
+        const commentsCollection = collection(db, "comments");
+        const q = query(commentsCollection, where("quote_id", "==", quoteId));
+        const querySnapshot = await getDocs(q);
+
+        const commentsContainer = document.getElementById("comments");
+        commentsContainer.innerHTML = ""; // Efface les anciens commentaires
+
+        querySnapshot.forEach((doc) => {
+            const data = doc.data();
+            const commentDiv = document.createElement("div");
+            commentDiv.classList.add("comment");
+
+            const date = new Date(data.timestamp.seconds * 1000).toLocaleString();
+            const note = data.note ? ` - Note : ${data.note}` : ""; // Affiche la note si elle existe
+
+            commentDiv.innerHTML = `<strong>${date}</strong>${note}<p>${data.text}</p>`;
+            commentsContainer.appendChild(commentDiv);
+        });
+    } catch (error) {
+        console.error("Erreur lors du chargement des commentaires :", error);
     }
 };
 
@@ -129,7 +158,7 @@ const initializeStars = () => {
                     quoteId: currentQuoteId,
                     userId: userId,
                     rating: rating,
-                    timestamp: serverTimestamp()
+                    timestamp: new Date()
                 });
 
                 // Afficher la confirmation et allumer les étoiles
@@ -143,32 +172,6 @@ const initializeStars = () => {
     });
 };
 
-// Fonction pour charger les commentaires
-const fetchComments = async (quoteId) => {
-    try {
-        const commentsCollection = collection(db, "comments");
-        const q = query(commentsCollection, where("quote_id", "==", quoteId));
-        const querySnapshot = await getDocs(q);
-
-        const commentsContainer = document.getElementById("comments");
-        commentsContainer.innerHTML = ""; // Efface les anciens commentaires
-
-        querySnapshot.forEach((doc) => {
-            const data = doc.data();
-            const commentDiv = document.createElement("div");
-            commentDiv.classList.add("comment");
-
-            const date = new Date(data.timestamp.seconds * 1000).toLocaleString();
-            const note = data.note ? ` - Note : ${data.note}` : ""; // Affiche la note si elle existe
-
-            commentDiv.innerHTML = `<strong>${date}</strong>${note}<p>${data.text}</p>`;
-            commentsContainer.appendChild(commentDiv);
-        });
-    } catch (error) {
-        console.error("Erreur lors du chargement des commentaires :", error);
-    }
-};
-
 // Fonction pour ajouter un commentaire
 const addComment = async (text) => {
     if (!text.trim()) {
@@ -179,7 +182,7 @@ const addComment = async (text) => {
     try {
         await addDoc(collection(db, "comments"), {
             text: text.trim(),
-            timestamp: serverTimestamp(),
+            timestamp: new Date(),
             user_id: userId,
             quote_id: currentQuoteId
         });
@@ -202,6 +205,6 @@ document.getElementById("submit-comment").addEventListener("click", () => {
 
 // Exécuter les fonctions au chargement
 document.addEventListener("DOMContentLoaded", () => {
-    fetchRandomQuote();
+    fetchQuoteForToday(); // Charge la citation du jour
     initializeStars();
 });
