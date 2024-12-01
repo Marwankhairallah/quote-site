@@ -2,6 +2,8 @@ import { getFirestore, collection, getDocs, query, orderBy, limit, updateDoc, do
 
 const db = getFirestore();
 
+let currentRating = 0; // Note actuelle
+
 // Charger une citation aléatoire sauf celle d'hier
 const fetchRandomQuote = async () => {
     const quotesCollection = collection(db, "quotes");
@@ -31,32 +33,37 @@ const fetchRandomQuote = async () => {
 };
 
 // Gestion des étoiles
-let currentRating = 0; // Stocke la note sélectionnée
 const stars = document.querySelectorAll(".star");
 
-// Gestion des clics pour attribuer une note
-stars.forEach((star, index) => {
-    star.addEventListener("click", () => {
-        currentRating = index + 1;
-        updateStars(currentRating);
-        alert(`Vous avez noté ${currentRating} étoiles !`);
-    });
-});
-
-// Gestion du survol pour afficher un aperçu de la note
-stars.forEach((star, index) => {
+// Gestion du survol pour allumer les étoiles
+stars.forEach((star) => {
     star.addEventListener("mouseover", () => {
-        updateStars(index + 1); // Met à jour les étoiles jusqu'à l'étoile survolée
+        const rating = star.getAttribute("data-value");
+        updateStars(rating);
     });
+
     star.addEventListener("mouseout", () => {
-        updateStars(currentRating); // Restaure l'état des étoiles selon la note sélectionnée
+        updateStars(currentRating); // Restaure l'état selon la note sélectionnée
+    });
+
+    star.addEventListener("click", async () => {
+        currentRating = star.getAttribute("data-value");
+        updateStars(currentRating);
+
+        // Ajouter la note à la base de données
+        await addDoc(collection(db, "notes"), {
+            rating: parseInt(currentRating),
+            timestamp: new Date()
+        });
+
+        alert(`Merci d'avoir noté ${currentRating} étoiles !`);
     });
 });
 
-// Mise à jour de l'affichage des étoiles
+// Met à jour l'affichage des étoiles
 const updateStars = (rating) => {
-    stars.forEach((star, i) => {
-        if (i < rating) {
+    stars.forEach((star) => {
+        if (star.getAttribute("data-value") <= rating) {
             star.classList.add("active");
         } else {
             star.classList.remove("active");
