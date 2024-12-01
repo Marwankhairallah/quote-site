@@ -6,9 +6,7 @@ import {
     query,
     where,
     getDocs,
-    addDoc,
-    updateDoc,
-    doc
+    addDoc
 } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-firestore.js";
 
 // Configuration Firebase
@@ -70,7 +68,7 @@ const fetchDailyQuote = async () => {
     }
 };
 
-// Fonction pour initialiser les étoiles
+// Fonction pour initialiser les étoiles (VERSION INTACTE)
 const initializeStars = () => {
     const stars = document.querySelectorAll(".star");
     const ratingMessage = document.getElementById("rating-message");
