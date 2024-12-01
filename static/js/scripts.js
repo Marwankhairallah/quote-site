@@ -1,8 +1,8 @@
 // Import Firebase SDKs nécessaires
 import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-app.js";
-import { getFirestore, collection, query, where, getDocs, updateDoc, doc } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-firestore.js";
+import { getFirestore, collection, query, where, getDocs, addDoc, updateDoc, doc } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-firestore.js";
 
-// Configuration Firebase (remplace avec tes clés Firebase)
+// Configuration Firebase
 const firebaseConfig = {
     apiKey: "AIzaSyCXBfBW6bHfdiJaNmAdZ871Cmt7ZcPs-Do",
     authDomain: "quote-site-b9024.firebaseapp.com",
@@ -16,6 +16,16 @@ const firebaseConfig = {
 // Initialiser Firebase
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
+
+// Variables globales
+let currentQuoteId = null; // ID de la citation affichée
+let userId = localStorage.getItem("userId"); // Stocker l'ID utilisateur dans le localStorage
+
+// Si aucun userId n'est défini, en générer un
+if (!userId) {
+    userId = `user-${Math.random().toString(36).substring(2, 15)}`;
+    localStorage.setItem("userId", userId);
+}
 
 // Fonction pour récupérer une citation aléatoire
 const fetchRandomQuote = async () => {
@@ -38,7 +48,6 @@ const fetchRandomQuote = async () => {
         });
 
         if (quotes.length === 0) {
-            console.error("Aucune citation disponible pour aujourd'hui.");
             document.getElementById("quote-container").innerText = "Aucune citation disponible.";
             return;
         }
@@ -47,30 +56,34 @@ const fetchRandomQuote = async () => {
         const randomIndex = Math.floor(Math.random() * quotes.length);
         const randomQuote = quotes[randomIndex];
 
-        // Afficher la citation dans le conteneur
+        // Afficher la citation
         document.getElementById("quote-container").innerHTML = `
             <p>${randomQuote.text}</p>
             <p><strong>${randomQuote.author}</strong></p>
         `;
 
+        // Mettre à jour l'ID de la citation en cours
+        currentQuoteId = randomQuote.id;
+
         // Mettre à jour last_used_date pour cette citation
         const quoteDoc = doc(db, "quotes", randomQuote.id);
         await updateDoc(quoteDoc, { last_used_date: now.toISOString() });
     } catch (error) {
-        console.error("Erreur lors de la récupération de la citation :", error);
         document.getElementById("quote-container").innerText = "Erreur lors du chargement de la citation.";
+        console.error(error);
     }
 };
 
 // Fonction pour initialiser les étoiles
 const initializeStars = () => {
     const stars = document.querySelectorAll(".star");
+    const ratingMessage = document.createElement("div");
+    ratingMessage.id = "rating-message";
+    document.getElementById("rating-container").appendChild(ratingMessage);
 
     stars.forEach((star, index) => {
         star.addEventListener("mouseover", () => {
-            stars.forEach((s, i) => {
-                s.classList.toggle("hovered", i <= index);
-            });
+            stars.forEach((s, i) => s.classList.toggle("hovered", i <= index));
         });
 
         star.addEventListener("mouseout", () => {
@@ -79,8 +92,38 @@ const initializeStars = () => {
 
         star.addEventListener("click", async () => {
             const rating = index + 1;
-            alert(`Vous avez noté ${rating} étoile(s) !`);
-            // Vous pouvez ensuite enregistrer la note dans Firebase ici
+
+            if (!currentQuoteId) {
+                ratingMessage.innerText = "Impossible de noter sans citation.";
+                return;
+            }
+
+            // Vérifier si l'utilisateur a déjà noté cette citation
+            const ratingsCollection = collection(db, "notes");
+            const q = query(ratingsCollection, where("quoteId", "==", currentQuoteId), where("userId", "==", userId));
+            const querySnapshot = await getDocs(q);
+
+            if (!querySnapshot.empty) {
+                ratingMessage.innerText = "Vous avez déjà noté cette citation.";
+                return;
+            }
+
+            // Ajouter la note dans Firebase
+            try {
+                await addDoc(ratingsCollection, {
+                    quoteId: currentQuoteId,
+                    userId: userId,
+                    rating: rating,
+                    timestamp: new Date()
+                });
+
+                // Afficher le message de confirmation
+                ratingMessage.innerText = `Merci pour votre note de ${rating} étoile(s) !`;
+                stars.forEach((s, i) => s.classList.toggle("selected", i <= index));
+            } catch (error) {
+                ratingMessage.innerText = "Erreur lors de l'enregistrement de votre note.";
+                console.error(error);
+            }
         });
     });
 };
