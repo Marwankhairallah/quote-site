@@ -1,6 +1,16 @@
 // Import Firebase SDKs nécessaires
 import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-app.js";
-import { getFirestore, collection, query, where, getDocs, addDoc, updateDoc, doc } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-firestore.js";
+import {
+    getFirestore,
+    collection,
+    query,
+    where,
+    getDocs,
+    addDoc,
+    updateDoc,
+    doc,
+    serverTimestamp
+} from "https://www.gstatic.com/firebasejs/11.0.2/firebase-firestore.js";
 
 // Configuration Firebase
 const firebaseConfig = {
@@ -68,6 +78,9 @@ const fetchRandomQuote = async () => {
         // Mettre à jour last_used_date pour cette citation
         const quoteDoc = doc(db, "quotes", randomQuote.id);
         await updateDoc(quoteDoc, { last_used_date: now.toISOString() });
+
+        // Charger les commentaires pour cette citation
+        fetchComments(currentQuoteId);
     } catch (error) {
         document.getElementById("quote-container").innerText = "Erreur lors du chargement de la citation.";
         console.error(error);
@@ -101,7 +114,7 @@ const initializeStars = () => {
             }
 
             // Vérifier si l'utilisateur a déjà noté cette citation
-            const ratingsCollection = collection(db, "ratings");
+            const ratingsCollection = collection(db, "notes");
             const q = query(ratingsCollection, where("quoteId", "==", currentQuoteId), where("userId", "==", userId));
             const querySnapshot = await getDocs(q);
 
@@ -116,7 +129,7 @@ const initializeStars = () => {
                     quoteId: currentQuoteId,
                     userId: userId,
                     rating: rating,
-                    timestamp: new Date()
+                    timestamp: serverTimestamp()
                 });
 
                 // Afficher la confirmation et allumer les étoiles
@@ -129,6 +142,63 @@ const initializeStars = () => {
         });
     });
 };
+
+// Fonction pour charger les commentaires
+const fetchComments = async (quoteId) => {
+    try {
+        const commentsCollection = collection(db, "comments");
+        const q = query(commentsCollection, where("quote_id", "==", quoteId));
+        const querySnapshot = await getDocs(q);
+
+        const commentsContainer = document.getElementById("comments");
+        commentsContainer.innerHTML = ""; // Efface les anciens commentaires
+
+        querySnapshot.forEach((doc) => {
+            const data = doc.data();
+            const commentDiv = document.createElement("div");
+            commentDiv.classList.add("comment");
+
+            const date = new Date(data.timestamp.seconds * 1000).toLocaleString();
+            const note = data.note ? ` - Note : ${data.note}` : ""; // Affiche la note si elle existe
+
+            commentDiv.innerHTML = `<strong>${date}</strong>${note}<p>${data.text}</p>`;
+            commentsContainer.appendChild(commentDiv);
+        });
+    } catch (error) {
+        console.error("Erreur lors du chargement des commentaires :", error);
+    }
+};
+
+// Fonction pour ajouter un commentaire
+const addComment = async (text) => {
+    if (!text.trim()) {
+        alert("Le commentaire ne peut pas être vide.");
+        return;
+    }
+
+    try {
+        await addDoc(collection(db, "comments"), {
+            text: text.trim(),
+            timestamp: serverTimestamp(),
+            user_id: userId,
+            quote_id: currentQuoteId
+        });
+
+        // Recharge les commentaires
+        fetchComments(currentQuoteId);
+
+        // Efface le champ de texte
+        document.getElementById("comment").value = "";
+    } catch (error) {
+        console.error("Erreur lors de l'ajout du commentaire :", error);
+    }
+};
+
+// Ajoute un gestionnaire au bouton d'envoi de commentaire
+document.getElementById("submit-comment").addEventListener("click", () => {
+    const commentText = document.getElementById("comment").value;
+    addComment(commentText);
+});
 
 // Exécuter les fonctions au chargement
 document.addEventListener("DOMContentLoaded", () => {
