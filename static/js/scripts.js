@@ -1,6 +1,13 @@
 // Import Firebase SDKs nécessaires
 import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-app.js";
 import {
+    getAuth,
+    createUserWithEmailAndPassword,
+    signInWithEmailAndPassword,
+    signOut,
+    onAuthStateChanged
+} from "https://www.gstatic.com/firebasejs/11.0.2/firebase-auth.js";
+import {
     getFirestore,
     collection,
     query,
@@ -25,16 +32,66 @@ const firebaseConfig = {
 // Initialiser Firebase
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
+const auth = getAuth(app);
 
 // Variables globales
-let currentQuoteId = null; // ID de la citation affichée
-let userId = localStorage.getItem("userId"); // Stocker l'ID utilisateur dans le localStorage
+let currentQuoteId = null;
+let userId = null;
 
-// Si aucun userId n'est défini, en générer un
-if (!userId) {
-    userId = `user-${Math.random().toString(36).substring(2, 15)}`;
-    localStorage.setItem("userId", userId);
-}
+// Fonction pour surveiller l'état de l'utilisateur
+onAuthStateChanged(auth, (user) => {
+    const userInfo = document.getElementById("user-info");
+    const authButtons = document.getElementById("auth-buttons");
+    const commentInput = document.getElementById("comment");
+    const submitCommentButton = document.getElementById("submit-comment");
+
+    if (user) {
+        userId = user.uid;
+        userInfo.style.display = "block";
+        authButtons.style.display = "none";
+        commentInput.disabled = false;
+        submitCommentButton.disabled = false;
+        document.getElementById("user-email").innerText = user.email;
+    } else {
+        userId = null;
+        userInfo.style.display = "none";
+        authButtons.style.display = "block";
+        commentInput.disabled = true;
+        submitCommentButton.disabled = true;
+    }
+});
+
+// Gestion des boutons d'authentification
+document.getElementById("signup-button").addEventListener("click", async () => {
+    const email = prompt("Entrez votre email :");
+    const password = prompt("Entrez votre mot de passe :");
+    try {
+        await createUserWithEmailAndPassword(auth, email, password);
+        alert("Inscription réussie !");
+    } catch (error) {
+        alert("Erreur d'inscription : " + error.message);
+    }
+});
+
+document.getElementById("login-button").addEventListener("click", async () => {
+    const email = prompt("Entrez votre email :");
+    const password = prompt("Entrez votre mot de passe :");
+    try {
+        await signInWithEmailAndPassword(auth, email, password);
+        alert("Connexion réussie !");
+    } catch (error) {
+        alert("Erreur de connexion : " + error.message);
+    }
+});
+
+document.getElementById("logout-button").addEventListener("click", async () => {
+    try {
+        await signOut(auth);
+        alert("Déconnexion réussie !");
+    } catch (error) {
+        alert("Erreur de déconnexion : " + error.message);
+    }
+});
 
 // Fonction pour récupérer une citation unique par jour
 const fetchDailyQuote = async () => {
@@ -161,6 +218,11 @@ const initializeStars = () => {
 
             if (!currentQuoteId) {
                 ratingMessage.innerText = "Impossible de noter sans citation.";
+                return;
+            }
+
+            if (!userId) {
+                ratingMessage.innerText = "Vous devez être connecté pour voter.";
                 return;
             }
 

@@ -7,6 +7,16 @@
     <link rel="stylesheet" href="static/css/styles.css">
 </head>
 <body>
+    <div id="auth-container">
+        <div id="auth-buttons">
+            <button id="login-button">Connexion</button>
+            <button id="signup-button">Inscription</button>
+        </div>
+        <div id="user-info" style="display: none;">
+            <p>Bienvenue, <span id="user-email"></span></p>
+            <button id="logout-button">Déconnexion</button>
+        </div>
+    </div>
     <div id="app">
         <h1>Site de Citations</h1>
         <div id="quote-container">
@@ -22,15 +32,14 @@
             </span>
         </div>
         <div id="comment-container">
-            <textarea id="comment" placeholder="Votre commentaire..."></textarea>
-            <button id="submit-comment">Envoyer</button>
+            <textarea id="comment" placeholder="Votre commentaire..." disabled></textarea>
+            <button id="submit-comment" disabled>Envoyer</button>
         </div>
         <h2>Commentaires</h2>
         <div id="comments">
             <!-- Les commentaires seront affichés ici -->
         </div>
-        
-
+    </div>
     <script src="static/js/scripts.js" type="module"></script>
 </body>
 </html>
