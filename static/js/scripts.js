@@ -6,7 +6,9 @@ import {
     query,
     where,
     getDocs,
-    addDoc
+    addDoc,
+    updateDoc,
+    doc
 } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-firestore.js";
 
 // Configuration Firebase
@@ -34,7 +36,7 @@ if (!userId) {
     localStorage.setItem("userId", userId);
 }
 
-// Fonction pour afficher une citation unique par jour
+// Fonction pour récupérer une citation unique par jour
 const fetchDailyQuote = async () => {
     try {
         const quotesCollection = collection(db, "quotes");
@@ -66,6 +68,60 @@ const fetchDailyQuote = async () => {
     } catch (error) {
         console.error("Erreur lors du chargement de la citation :", error);
     }
+};
+
+// Fonction pour initialiser les étoiles
+const initializeStars = () => {
+    const stars = document.querySelectorAll(".star");
+    const ratingMessage = document.getElementById("rating-message");
+
+    stars.forEach((star, index) => {
+        // Gestion du survol des étoiles
+        star.addEventListener("mouseover", () => {
+            stars.forEach((s, i) => s.classList.toggle("hovered", i <= index));
+        });
+
+        star.addEventListener("mouseout", () => {
+            stars.forEach((s) => s.classList.remove("hovered"));
+        });
+
+        // Gestion du clic pour noter
+        star.addEventListener("click", async () => {
+            const rating = index + 1;
+
+            if (!currentQuoteId) {
+                ratingMessage.innerText = "Impossible de noter sans citation.";
+                return;
+            }
+
+            // Vérifier si l'utilisateur a déjà noté cette citation
+            const ratingsCollection = collection(db, "notes");
+            const q = query(ratingsCollection, where("quoteId", "==", currentQuoteId), where("userId", "==", userId));
+            const querySnapshot = await getDocs(q);
+
+            if (!querySnapshot.empty) {
+                ratingMessage.innerText = "Vous avez déjà noté cette citation.";
+                return;
+            }
+
+            // Ajouter la note dans Firebase
+            try {
+                await addDoc(ratingsCollection, {
+                    quoteId: currentQuoteId,
+                    userId: userId,
+                    rating: rating,
+                    timestamp: new Date()
+                });
+
+                // Afficher la confirmation et allumer les étoiles
+                ratingMessage.innerText = `Merci pour votre note de ${rating} étoile(s) !`;
+                stars.forEach((s, i) => s.classList.toggle("selected", i <= index));
+            } catch (error) {
+                ratingMessage.innerText = "Erreur lors de l'enregistrement de votre note.";
+                console.error(error);
+            }
+        });
+    });
 };
 
 // Fonction pour ajouter un commentaire
@@ -130,10 +186,12 @@ const fetchComments = async () => {
     }
 };
 
-// Initialiser l'écouteur d'événement pour le bouton "Envoyer"
+// Exécuter les fonctions au chargement
 document.addEventListener("DOMContentLoaded", () => {
     fetchDailyQuote();
 
     const submitButton = document.getElementById("submit-comment");
     submitButton.addEventListener("click", addComment);
+
+    initializeStars(); // Initialiser les étoiles
 });
