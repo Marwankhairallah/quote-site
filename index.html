@@ -1,25 +1,16 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Site de Citations</title>
+    <link rel="stylesheet" href="static/css/styles.css">
+</head>
 <body>
     <div id="auth-container">
         <div id="auth-buttons">
-            <button id="show-login">Connexion</button>
-            <button id="show-signup">Inscription</button>
-        </div>
-        <div id="login-form" class="auth-form" style="display: none;">
-            <h2>Connexion</h2>
-            <input type="email" id="login-email" placeholder="Email" required>
-            <input type="password" id="login-password" placeholder="Mot de passe" required>
-            <button id="login-submit">Se connecter</button>
-            <p><a href="#" id="forgot-password">Mot de passe oublié ?</a></p>
-            <button class="close-form">Fermer</button>
-        </div>
-        <div id="signup-form" class="auth-form" style="display: none;">
-            <h2>Inscription</h2>
-            <input type="text" id="signup-username" placeholder="Nom d'utilisateur" required>
-            <input type="email" id="signup-email" placeholder="Email" required>
-            <input type="password" id="signup-password" placeholder="Mot de passe" required>
-            <input type="password" id="signup-password-confirm" placeholder="Confirmer le mot de passe" required>
-            <button id="signup-submit">S'inscrire</button>
-            <button class="close-form">Fermer</button>
+            <button id="login-button">Connexion</button>
+            <button id="signup-button">Inscription</button>
         </div>
         <div id="user-info" style="display: none;">
             <p>Bienvenue, <span id="user-email"></span></p>
@@ -51,3 +42,4 @@
     </div>
     <script src="static/js/scripts.js" type="module"></script>
 </body>
+</html>
