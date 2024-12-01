@@ -68,9 +68,64 @@ const fetchDailyQuote = async () => {
 
         // Mettre à jour l'ID de la citation en cours
         currentQuoteId = dailyQuote.id;
+
+        // Charger les commentaires pour la citation
+        fetchComments();
     } catch (error) {
         console.error("Erreur lors du chargement de la citation :", error);
         document.getElementById("quote-container").innerText = "Erreur lors du chargement de la citation.";
+    }
+};
+
+// Fonction pour charger les commentaires
+const fetchComments = async () => {
+    try {
+        const commentsCollection = collection(db, "comments");
+        const q = query(commentsCollection, where("quoteId", "==", currentQuoteId));
+        const querySnapshot = await getDocs(q);
+
+        const commentsContainer = document.getElementById("comments");
+        commentsContainer.innerHTML = ""; // Réinitialiser les commentaires affichés
+
+        querySnapshot.forEach((doc) => {
+            const data = doc.data();
+            const commentElement = document.createElement("div");
+            commentElement.className = "comment";
+            commentElement.innerHTML = `
+                <p>${data.text}</p>
+                <p><small>${new Date(data.timestamp.toDate()).toLocaleString()}</small></p>
+            `;
+            commentsContainer.appendChild(commentElement);
+        });
+    } catch (error) {
+        console.error("Erreur lors du chargement des commentaires :", error);
+        document.getElementById("comments").innerText = "Erreur lors du chargement des commentaires.";
+    }
+};
+
+// Fonction pour ajouter un commentaire
+const addComment = async () => {
+    const commentInput = document.getElementById("comment-input");
+    const commentText = commentInput.value.trim();
+
+    if (!commentText) {
+        alert("Veuillez entrer un commentaire.");
+        return;
+    }
+
+    try {
+        const commentsCollection = collection(db, "comments");
+        await addDoc(commentsCollection, {
+            quoteId: currentQuoteId,
+            userId: userId,
+            text: commentText,
+            timestamp: new Date()
+        });
+
+        commentInput.value = ""; // Réinitialiser le champ de commentaire
+        fetchComments(); // Recharger les commentaires
+    } catch (error) {
+        console.error("Erreur lors de l'ajout du commentaire :", error);
     }
 };
 
@@ -128,57 +183,6 @@ const initializeStars = () => {
             }
         });
     });
-};
-
-// Fonction pour charger les commentaires
-const fetchComments = async () => {
-    try {
-        const commentsCollection = collection(db, "comments");
-        const q = query(commentsCollection, where("quoteId", "==", currentQuoteId));
-        const querySnapshot = await getDocs(q);
-
-        const commentsContainer = document.getElementById("comments");
-        commentsContainer.innerHTML = ""; // Réinitialiser les commentaires affichés
-
-        querySnapshot.forEach((doc) => {
-            const data = doc.data();
-            const commentElement = document.createElement("div");
-            commentElement.className = "comment";
-            commentElement.innerHTML = `
-                <p>${data.text}</p>
-                <p><small>${new Date(data.timestamp.toDate()).toLocaleString()}</small></p>
-            `;
-            commentsContainer.appendChild(commentElement);
-        });
-    } catch (error) {
-        console.error("Erreur lors du chargement des commentaires :", error);
-    }
-};
-
-// Fonction pour ajouter un commentaire
-const addComment = async () => {
-    const commentInput = document.getElementById("comment-input");
-    const commentText = commentInput.value.trim();
-
-    if (!commentText) {
-        alert("Veuillez entrer un commentaire.");
-        return;
-    }
-
-    try {
-        const commentsCollection = collection(db, "comments");
-        await addDoc(commentsCollection, {
-            quoteId: currentQuoteId,
-            userId: userId,
-            text: commentText,
-            timestamp: new Date()
-        });
-
-        commentInput.value = ""; // Réinitialiser le champ de commentaire
-        fetchComments(); // Recharger les commentaires
-    } catch (error) {
-        console.error("Erreur lors de l'ajout du commentaire :", error);
-    }
 };
 
 // Exécuter les fonctions au chargement
