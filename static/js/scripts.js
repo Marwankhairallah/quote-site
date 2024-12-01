@@ -80,6 +80,11 @@ const fetchDailyQuote = async () => {
 // Fonction pour charger les commentaires
 const fetchComments = async () => {
     try {
+        if (!currentQuoteId) {
+            document.getElementById("comments").innerText = "Aucun commentaire disponible.";
+            return;
+        }
+
         const commentsCollection = collection(db, "comments");
         const q = query(commentsCollection, where("quoteId", "==", currentQuoteId));
         const querySnapshot = await getDocs(q);
@@ -99,17 +104,21 @@ const fetchComments = async () => {
         });
     } catch (error) {
         console.error("Erreur lors du chargement des commentaires :", error);
-        document.getElementById("comments").innerText = "Erreur lors du chargement des commentaires.";
     }
 };
 
 // Fonction pour ajouter un commentaire
 const addComment = async () => {
-    const commentInput = document.getElementById("comment-input");
+    const commentInput = document.getElementById("comment");
     const commentText = commentInput.value.trim();
 
     if (!commentText) {
         alert("Veuillez entrer un commentaire.");
+        return;
+    }
+
+    if (!currentQuoteId) {
+        alert("Aucune citation sélectionnée pour ajouter un commentaire.");
         return;
     }
 
