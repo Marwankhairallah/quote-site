@@ -1,8 +1,21 @@
-// Importer les SDK Firebase nécessaires
+// Import Firebase SDKs nécessaires
+import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-app.js";
 import { getFirestore, collection, query, where, getDocs, updateDoc, doc } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-firestore.js";
 
-// Initialiser Firestore
-const db = getFirestore();
+// Configuration Firebase (remplace avec tes clés Firebase)
+const firebaseConfig = {
+    apiKey: "AIzaSyCXBfBW6bHfdiJaNmAdZ871Cmt7ZcPs-Do",
+    authDomain: "quote-site-b9024.firebaseapp.com",
+    projectId: "quote-site-b9024",
+    storageBucket: "quote-site-b9024.firebasestorage.app",
+    messagingSenderId: "777925326089",
+    appId: "1:777925326089:web:04cc8b3172383e32b68fd8",
+    measurementId: "G-WKZNTYXB58"
+};
+
+// Initialiser Firebase
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
 
 // Fonction pour récupérer une citation aléatoire
 const fetchRandomQuote = async () => {
@@ -49,5 +62,31 @@ const fetchRandomQuote = async () => {
     }
 };
 
-// Exécuter la fonction au chargement
-fetchRandomQuote();
+// Fonction pour initialiser les étoiles
+const initializeStars = () => {
+    const stars = document.querySelectorAll(".star");
+
+    stars.forEach((star, index) => {
+        star.addEventListener("mouseover", () => {
+            stars.forEach((s, i) => {
+                s.classList.toggle("hovered", i <= index);
+            });
+        });
+
+        star.addEventListener("mouseout", () => {
+            stars.forEach((s) => s.classList.remove("hovered"));
+        });
+
+        star.addEventListener("click", async () => {
+            const rating = index + 1;
+            alert(`Vous avez noté ${rating} étoile(s) !`);
+            // Vous pouvez ensuite enregistrer la note dans Firebase ici
+        });
+    });
+};
+
+// Exécuter les fonctions au chargement
+document.addEventListener("DOMContentLoaded", () => {
+    fetchRandomQuote();
+    initializeStars();
+});
