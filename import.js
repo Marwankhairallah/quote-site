@@ -3,17 +3,18 @@ import { getFirestore, collection, addDoc } from "https://www.gstatic.com/fireba
 
 // Configuration Firebase (remplace avec tes clés Firebase)
 const firebaseConfig = {
-    apiKey: "TON_API_KEY",
-    authDomain: "TON_PROJECT_ID.firebaseapp.com",
-    projectId: "TON_PROJECT_ID",
-    storageBucket: "TON_PROJECT_ID.appspot.com",
-    messagingSenderId: "TON_MESSAGING_ID",
-    appId: "TON_APP_ID"
-};
+    apiKey: "AIzaSyCXBfBW6bHfdiJaNmAdZ871Cmt7ZcPs-Do",
+    authDomain: "quote-site-b9024.firebaseapp.com",
+    projectId: "quote-site-b9024",
+    storageBucket: "quote-site-b9024.firebasestorage.app",
+    messagingSenderId: "777925326089",
+    appId: "1:777925326089:web:04cc8b3172383e32b68fd8",
+    measurementId: "G-WKZNTYXB58"
+  };
 
-// Initialiser Firebase
-const app = initializeApp(firebaseConfig);
-const db = getFirestore(app);
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+  const analytics = getAnalytics(app);
 
 // Fonction pour charger les citations depuis quotes.json et les importer dans Firestore
 const importQuotes = async () => {
