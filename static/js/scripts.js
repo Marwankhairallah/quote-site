@@ -6,7 +6,9 @@ import {
     query,
     where,
     getDocs,
-    addDoc
+    addDoc,
+    updateDoc,
+    doc
 } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-firestore.js";
 
 // Configuration Firebase
@@ -25,10 +27,10 @@ const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
 // Variables globales
-let currentQuoteId = null;
-let userId = localStorage.getItem("userId");
+let currentQuoteId = null; // ID de la citation affichée
+let userId = localStorage.getItem("userId"); // Stocker l'ID utilisateur dans le localStorage
 
-// Générer un ID utilisateur si non existant
+// Si aucun userId n'est défini, en générer un
 if (!userId) {
     userId = `user-${Math.random().toString(36).substring(2, 15)}`;
     localStorage.setItem("userId", userId);
@@ -50,28 +52,89 @@ const fetchDailyQuote = async () => {
             return;
         }
 
+        // Calculer un index unique pour la citation du jour
         const today = new Date();
-        const dailyIndex = today.getFullYear() * 1000 + today.getMonth() * 100 + today.getDate();
-        const quoteIndex = dailyIndex % quotes.length;
+        const totalQuotes = quotes.length;
+        const dailyIndex = today.getFullYear() * 1000 + today.getMonth() * 100 + today.getDate(); // ID unique par jour
+        const quoteIndex = dailyIndex % totalQuotes; // Index basé sur le nombre total de citations
 
         const dailyQuote = quotes[quoteIndex];
-        currentQuoteId = dailyQuote.id;
 
+        // Afficher la citation
         document.getElementById("quote-container").innerHTML = `
             <p>${dailyQuote.text}</p>
             <p><strong>${dailyQuote.author}</strong></p>
         `;
 
-        fetchComments(); // Charger les commentaires liés à cette citation
+        // Mettre à jour l'ID de la citation en cours
+        currentQuoteId = dailyQuote.id;
+
+        // Charger les commentaires pour la citation
+        fetchComments();
     } catch (error) {
         console.error("Erreur lors du chargement de la citation :", error);
+        document.getElementById("quote-container").innerText = "Erreur lors du chargement de la citation.";
     }
 };
 
-// Fonction pour initialiser les étoiles (VERSION INTACTE)
+// Fonction pour charger les commentaires
+const fetchComments = async () => {
+    try {
+        const commentsCollection = collection(db, "comments");
+        const q = query(commentsCollection, where("quoteId", "==", currentQuoteId));
+        const querySnapshot = await getDocs(q);
+
+        const commentsContainer = document.getElementById("comments");
+        commentsContainer.innerHTML = ""; // Réinitialiser les commentaires affichés
+
+        querySnapshot.forEach((doc) => {
+            const data = doc.data();
+            const commentElement = document.createElement("div");
+            commentElement.className = "comment";
+            commentElement.innerHTML = `
+                <p>${data.text}</p>
+                <p><small>${new Date(data.timestamp.toDate()).toLocaleString()}</small></p>
+            `;
+            commentsContainer.appendChild(commentElement);
+        });
+    } catch (error) {
+        console.error("Erreur lors du chargement des commentaires :", error);
+        document.getElementById("comments").innerText = "Erreur lors du chargement des commentaires.";
+    }
+};
+
+// Fonction pour ajouter un commentaire
+const addComment = async () => {
+    const commentInput = document.getElementById("comment-input");
+    const commentText = commentInput.value.trim();
+
+    if (!commentText) {
+        alert("Veuillez entrer un commentaire.");
+        return;
+    }
+
+    try {
+        const commentsCollection = collection(db, "comments");
+        await addDoc(commentsCollection, {
+            quoteId: currentQuoteId,
+            userId: userId,
+            text: commentText,
+            timestamp: new Date()
+        });
+
+        commentInput.value = ""; // Réinitialiser le champ de commentaire
+        fetchComments(); // Recharger les commentaires
+    } catch (error) {
+        console.error("Erreur lors de l'ajout du commentaire :", error);
+    }
+};
+
+// Fonction pour initialiser les étoiles
 const initializeStars = () => {
     const stars = document.querySelectorAll(".star");
-    const ratingMessage = document.getElementById("rating-message");
+    const ratingMessage = document.createElement("div");
+    ratingMessage.id = "rating-message";
+    document.getElementById("rating-container").appendChild(ratingMessage);
 
     stars.forEach((star, index) => {
         // Gestion du survol des étoiles
@@ -122,74 +185,11 @@ const initializeStars = () => {
     });
 };
 
-// Fonction pour ajouter un commentaire
-const addComment = async () => {
-    const commentInput = document.getElementById("comment-input");
-    const commentText = commentInput.value.trim();
-
-    if (!commentText) {
-        alert("Veuillez entrer un commentaire.");
-        return;
-    }
-
-    if (!currentQuoteId) {
-        alert("Aucune citation sélectionnée pour ajouter un commentaire.");
-        return;
-    }
-
-    try {
-        const commentsCollection = collection(db, "comments");
-        await addDoc(commentsCollection, {
-            quoteId: currentQuoteId,
-            userId: userId,
-            text: commentText,
-            timestamp: new Date()
-        });
-
-        commentInput.value = ""; // Réinitialiser le champ de texte
-        fetchComments(); // Recharger les commentaires
-    } catch (error) {
-        console.error("Erreur lors de l'ajout du commentaire :", error);
-        alert("Erreur lors de l'ajout du commentaire.");
-    }
-};
-
-// Fonction pour charger les commentaires liés à une citation
-const fetchComments = async () => {
-    if (!currentQuoteId) {
-        document.getElementById("comments").innerText = "Aucun commentaire disponible.";
-        return;
-    }
-
-    try {
-        const commentsCollection = collection(db, "comments");
-        const q = query(commentsCollection, where("quoteId", "==", currentQuoteId));
-        const querySnapshot = await getDocs(q);
-
-        const commentsContainer = document.getElementById("comments");
-        commentsContainer.innerHTML = ""; // Réinitialiser le conteneur
-
-        querySnapshot.forEach((doc) => {
-            const data = doc.data();
-            const commentDiv = document.createElement("div");
-            commentDiv.classList.add("comment");
-            commentDiv.innerHTML = `
-                <p>${data.text}</p>
-                <p><small>${new Date(data.timestamp.toDate()).toLocaleString()}</small></p>
-            `;
-            commentsContainer.appendChild(commentDiv);
-        });
-    } catch (error) {
-        console.error("Erreur lors du chargement des commentaires :", error);
-    }
-};
-
 // Exécuter les fonctions au chargement
 document.addEventListener("DOMContentLoaded", () => {
     fetchDailyQuote();
+    initializeStars();
 
-    const submitButton = document.getElementById("submit-comment");
-    submitButton.addEventListener("click", addComment);
-
-    initializeStars(); // Initialiser les étoiles
+    // Associer le bouton "Envoyer" à l'ajout de commentaire
+    document.getElementById("submit-comment").addEventListener("click", addComment);
 });
