@@ -11,7 +11,7 @@ const fetchComments = async (currentQuoteId) => {
         }
 
         const commentsCollection = collection(db, "comments");
-        const q = query(commentsCollection, where("quoteId", "==", currentQuoteId));
+        const q = query(commentsCollection, where("quoteId", "==", currentQuoteId), orderBy("timestamp", "desc"));
         const querySnapshot = await getDocs(q);
 
         const commentsContainer = document.getElementById("comments");
