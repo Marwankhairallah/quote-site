@@ -1,5 +1,5 @@
 import { db } from "./firebase-config.js";
-import { collection, query, where, getDocs, addDoc, doc, getDoc } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-firestore.js";
+import { collection, query, where, getDocs, addDoc, doc, getDoc, orderBy } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-firestore.js";
 import { userId } from "./auth.js";
 import { currentQuoteId } from "./quotes.js";
 
@@ -11,7 +11,10 @@ const fetchComments = async (currentQuoteId) => {
         }
 
         const commentsCollection = collection(db, "comments");
-        const q = query(commentsCollection, where("quoteId", "==", currentQuoteId), orderBy("timestamp", "desc"));
+        const q = query(commentsCollection, where("quoteId", "==", 
+            currentQuoteId),
+            orderBy("timestamp", "desc")
+        );
         const querySnapshot = await getDocs(q);
 
         const commentsContainer = document.getElementById("comments");
