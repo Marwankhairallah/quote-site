@@ -1,10 +1,16 @@
 import { db } from "./firebase-config.js";
-import { collection, query, where, getDocs, addDoc } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-firestore.js";
+import { collection, addDoc, query, where, getDocs } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-firestore.js";
+import { currentQuoteId } from "./quotes.js";
 
-export const fetchComments = async (quoteId) => {
+const fetchComments = async () => {
     try {
+        if (!currentQuoteId) {
+            document.getElementById("comments").innerText = "Aucun commentaire disponible.";
+            return;
+        }
+
         const commentsCollection = collection(db, "comments");
-        const q = query(commentsCollection, where("quoteId", "==", quoteId));
+        const q = query(commentsCollection, where("quoteId", "==", currentQuoteId));
         const querySnapshot = await getDocs(q);
 
         const commentsContainer = document.getElementById("comments");
@@ -25,16 +31,28 @@ export const fetchComments = async (quoteId) => {
     }
 };
 
-export const addComment = async (quoteId, userId, commentText) => {
+const addComment = async (userId) => {
+    const commentInput = document.getElementById("comment");
+    const commentText = commentInput.value.trim();
+
+    if (!commentText) {
+        alert("Veuillez entrer un commentaire.");
+        return;
+    }
+
     try {
-        const commentsCollection = collection(db, "comments");
-        await addDoc(commentsCollection, {
-            quoteId,
+        await addDoc(collection(db, "comments"), {
+            quoteId: currentQuoteId,
             userId,
             text: commentText,
             timestamp: new Date()
         });
+
+        commentInput.value = "";
+        fetchComments();
     } catch (error) {
         console.error("Erreur lors de l'ajout du commentaire :", error);
     }
 };
+
+export { fetchComments, addComment };

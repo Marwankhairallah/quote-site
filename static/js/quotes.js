@@ -1,15 +1,15 @@
 import { db } from "./firebase-config.js";
 import { collection, getDocs } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-firestore.js";
 
-export const fetchDailyQuote = async () => {
+let currentQuoteId = null;
+
+const fetchDailyQuote = async () => {
     try {
         const quotesCollection = collection(db, "quotes");
         const querySnapshot = await getDocs(quotesCollection);
 
         const quotes = [];
-        querySnapshot.forEach((doc) => {
-            quotes.push({ id: doc.id, ...doc.data() });
-        });
+        querySnapshot.forEach((doc) => quotes.push({ id: doc.id, ...doc.data() }));
 
         if (quotes.length === 0) {
             document.getElementById("quote-container").innerText = "Aucune citation disponible.";
@@ -27,8 +27,10 @@ export const fetchDailyQuote = async () => {
             <p><strong>${dailyQuote.author}</strong></p>
         `;
 
-        return dailyQuote.id;
+        currentQuoteId = dailyQuote.id;
     } catch (error) {
         console.error("Erreur lors du chargement de la citation :", error);
     }
 };
+
+export { fetchDailyQuote, currentQuoteId };
