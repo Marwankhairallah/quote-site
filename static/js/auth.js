@@ -1,31 +1,68 @@
-import { auth, db } from "./firebase-config.js";
+// Import Firebase SDKs nécessaires
+import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-app.js";
 import {
+    getAuth,
     createUserWithEmailAndPassword,
     signInWithEmailAndPassword,
     sendPasswordResetEmail,
     signOut,
     onAuthStateChanged
 } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-auth.js";
-import { setDoc, doc } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-firestore.js";
+import {
+    getFirestore,
+    collection,
+    query,
+    where,
+    getDocs,
+    addDoc,
+    updateDoc,
+    doc,
+    setDoc
+} from "https://www.gstatic.com/firebasejs/11.0.2/firebase-firestore.js";
 
-// Affichage des formulaires
-export const showLoginForm = () => {
+// Configuration Firebase
+const firebaseConfig = { 
+    apiKey: "AIzaSyCXBfBW6bHfdiJaNmAdZ871Cmt7ZcPs-Do",
+    authDomain: "quote-site-b9024.firebaseapp.com",
+    projectId: "quote-site-b9024",
+    storageBucket: "quote-site-b9024.firebasestorage.app",
+    messagingSenderId: "777925326089",
+    appId: "1:777925326089:web:04cc8b3172383e32b68fd8",
+    measurementId: "G-WKZNTYXB58"
+};
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+const auth = getAuth(app);
+
+// Variables globales
+let userId = null;
+let currentQuoteId = null;
+
+// Fonction pour basculer l'affichage des formulaires
+const showLoginForm = () => {
     document.getElementById("login-form").style.display = "block";
     document.getElementById("signup-form").style.display = "none";
 };
 
-export const showSignupForm = () => {
+const showSignupForm = () => {
     document.getElementById("signup-form").style.display = "block";
     document.getElementById("login-form").style.display = "none";
 };
 
-export const closeForms = () => {
+const closeForms = () => {
     document.getElementById("login-form").style.display = "none";
     document.getElementById("signup-form").style.display = "none";
 };
 
-// Inscription
-export const handleSignup = async () => {
+// Gestion des boutons de formulaire
+document.getElementById("show-login").addEventListener("click", showLoginForm);
+document.getElementById("show-signup").addEventListener("click", showSignupForm);
+document.querySelectorAll(".close-form").forEach((button) => {
+    button.addEventListener("click", closeForms);
+});
+
+// Gestion de l'inscription
+document.getElementById("signup-submit").addEventListener("click", async () => {
     const username = document.getElementById("signup-username").value.trim();
     const email = document.getElementById("signup-email").value.trim();
     const password = document.getElementById("signup-password").value.trim();
@@ -40,16 +77,17 @@ export const handleSignup = async () => {
         const userCredential = await createUserWithEmailAndPassword(auth, email, password);
         const user = userCredential.user;
 
+        // Ajouter le nom d'utilisateur dans Firestore
         await setDoc(doc(db, "users", user.uid), { username, email });
         alert("Inscription réussie !");
         closeForms();
     } catch (error) {
         alert("Erreur lors de l'inscription : " + error.message);
     }
-};
+});
 
-// Connexion
-export const handleLogin = async () => {
+// Gestion de la connexion
+document.getElementById("login-submit").addEventListener("click", async () => {
     const email = document.getElementById("login-email").value.trim();
     const password = document.getElementById("login-password").value.trim();
 
@@ -60,37 +98,413 @@ export const handleLogin = async () => {
     } catch (error) {
         alert("Erreur lors de la connexion : " + error.message);
     }
-};
+});
+
+// Gestion du mot de passe oublié
+document.getElementById("forgot-password").addEventListener("click", async () => {
+    const email = prompt("Entrez votre email pour réinitialiser votre mot de passe :");
+    if (!email) return;
+
+    try {
+        await sendPasswordResetEmail(auth, email);
+        alert("Un email de réinitialisation a été envoyé !");
+    } catch (error) {
+        alert("Erreur lors de la réinitialisation du mot de passe : " + error.message);
+    }
+});
 
 // Déconnexion
-export const handleLogout = async () => {
+document.getElementById("logout-button").addEventListener("click", async () => {
     try {
         await signOut(auth);
         alert("Déconnexion réussie !");
     } catch (error) {
         alert("Erreur lors de la déconnexion : " + error.message);
     }
+});
+
+// Surveiller l'état de l'utilisateur
+onAuthStateChanged(auth, (user) => {
+    const userInfo = document.getElementById("user-info");
+    const authButtons = document.getElementById("auth-buttons");
+    const commentInput = document.getElementById("comment");
+    const submitCommentButton = document.getElementById("submit-comment");
+
+    if (user) {
+        userId = user.uid;
+        userInfo.style.display = "block";
+        authButtons.style.display = "none";
+        commentInput.disabled = false;
+        submitCommentButton.disabled = false;
+        document.getElementById("user-email").innerText = user.email;
+    } else {
+        userId = null;
+        userInfo.style.display = "none";
+        authButtons.style.display = "block";
+        commentInput.disabled = true;
+        submitCommentButton.disabled = true;
+    }
+});
+
+// Fonction pour récupérer une citation quotidienne
+const fetchDailyQuote = async () => {
+    try {
+        const quotesCollection = collection(db, "quotes");
+        const querySnapshot = await getDocs(quotesCollection);
+
+        const quotes = [];
+        querySnapshot.forEach((doc) => {
+            quotes.push({ id: doc.id, ...doc.data() });
+        });
+
+        if (quotes.length === 0) {
+            document.getElementById("quote-container").innerText = "Aucune citation disponible.";
+            return;
+        }
+
+        const today = new Date();
+        const totalQuotes = quotes.length;
+        const dailyIndex = today.getFullYear() * 1000 + today.getMonth() * 100 + today.getDate();
+        const quoteIndex = dailyIndex % totalQuotes;
+
+        const dailyQuote = quotes[quoteIndex];
+        document.getElementById("quote-container").innerHTML = `
+            <p>${dailyQuote.text}</p>
+            <p><strong>${dailyQuote.author}</strong></p>
+        `;
+
+        currentQuoteId = dailyQuote.id;
+        fetchComments();
+    } catch (error) {
+        console.error("Erreur lors du chargement de la citation :", error);
+    }
 };
 
-// Gestion de l'état de l'utilisateur
-export const monitorAuthState = () => {
-    onAuthStateChanged(auth, (user) => {
-        const userInfo = document.getElementById("user-info");
-        const authButtons = document.getElementById("auth-buttons");
-        const commentInput = document.getElementById("comment");
-        const submitCommentButton = document.getElementById("submit-comment");
-
-        if (user) {
-            userInfo.style.display = "block";
-            authButtons.style.display = "none";
-            commentInput.disabled = false;
-            submitCommentButton.disabled = false;
-            document.getElementById("user-email").innerText = user.email;
-        } else {
-            userInfo.style.display = "none";
-            authButtons.style.display = "block";
-            commentInput.disabled = true;
-            submitCommentButton.disabled = true;
+// Fonction pour charger les commentaires
+const fetchComments = async () => {
+    try {
+        if (!currentQuoteId) {
+            document.getElementById("comments").innerText = "Aucun commentaire disponible.";
+            return;
         }
+
+        const commentsCollection = collection(db, "comments");
+        const q = query(commentsCollection, where("quoteId", "==", currentQuoteId));
+        const querySnapshot = await getDocs(q);
+
+        const commentsContainer = document.getElementById("comments");
+        commentsContainer.innerHTML = "";
+
+        querySnapshot.forEach((doc) => {
+            const data = doc.data();
+            const commentElement = document.createElement("div");
+            commentElement.className = "comment";
+            commentElement.innerHTML = `
+                <p>${data.text}</p>
+                <p><small>${new Date(data.timestamp.toDate()).toLocaleString()}</small></p>
+            `;
+            commentsContainer.appendChild(commentElement);
+        });
+    } catch (error) {
+        console.error("Erreur lors du chargement des commentaires :", error);
+    }
+};
+
+// Fonction pour ajouter un commentaire
+document.getElementById("submit-comment").addEventListener("click", async () => {
+    const commentInput = document.getElementById("comment");
+    const commentText = commentInput.value.trim();
+
+    if (!commentText) {
+        alert("Veuillez entrer un commentaire.");
+        return;
+    }
+
+    if (!currentQuoteId) {
+        alert("Aucune citation sélectionnée pour ajouter un commentaire.");
+        return;
+    }
+
+    try {
+        const commentsCollection = collection(db, "comments");
+        await addDoc(commentsCollection, {
+            quoteId: currentQuoteId,
+            userId: userId,
+            text: commentText,
+            timestamp: new Date()
+        });
+
+        commentInput.value = "";
+        fetchComments();
+    } catch (error) {
+        console.error("Erreur lors de l'ajout du commentaire :", error);
+    }
+});
+
+// Import Firebase SDKs nécessaires
+import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-app.js";
+import {
+    getAuth,
+    createUserWithEmailAndPassword,
+    signInWithEmailAndPassword,
+    signOut,
+    onAuthStateChanged
+} from "https://www.gstatic.com/firebasejs/11.0.2/firebase-auth.js";
+import {
+    getFirestore,
+    collection,
+    query,
+    where,
+    getDocs,
+    addDoc,
+    updateDoc,
+    doc
+} from "https://www.gstatic.com/firebasejs/11.0.2/firebase-firestore.js";
+
+// Configuration Firebase
+const firebaseConfig = {
+    apiKey: "AIzaSyCXBfBW6bHfdiJaNmAdZ871Cmt7ZcPs-Do",
+    authDomain: "quote-site-b9024.firebaseapp.com",
+    projectId: "quote-site-b9024",
+    storageBucket: "quote-site-b9024.firebasestorage.app",
+    messagingSenderId: "777925326089",
+    appId: "1:777925326089:web:04cc8b3172383e32b68fd8",
+    measurementId: "G-WKZNTYXB58"
+};
+
+// Initialiser Firebase
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+const auth = getAuth(app);
+
+// Variables globales
+let currentQuoteId = null;
+let userId = null;
+
+// Fonction pour surveiller l'état de l'utilisateur
+onAuthStateChanged(auth, (user) => {
+    const userInfo = document.getElementById("user-info");
+    const authButtons = document.getElementById("auth-buttons");
+    const commentInput = document.getElementById("comment");
+    const submitCommentButton = document.getElementById("submit-comment");
+
+    if (user) {
+        userId = user.uid;
+        userInfo.style.display = "block";
+        authButtons.style.display = "none";
+        commentInput.disabled = false;
+        submitCommentButton.disabled = false;
+        document.getElementById("user-email").innerText = user.email;
+    } else {
+        userId = null;
+        userInfo.style.display = "none";
+        authButtons.style.display = "block";
+        commentInput.disabled = true;
+        submitCommentButton.disabled = true;
+    }
+});
+
+// Gestion des boutons d'authentification
+document.getElementById("signup-button").addEventListener("click", async () => {
+    const email = prompt("Entrez votre email :");
+    const password = prompt("Entrez votre mot de passe :");
+    try {
+        await createUserWithEmailAndPassword(auth, email, password);
+        alert("Inscription réussie !");
+    } catch (error) {
+        alert("Erreur d'inscription : " + error.message);
+    }
+});
+
+document.getElementById("login-button").addEventListener("click", async () => {
+    const email = prompt("Entrez votre email :");
+    const password = prompt("Entrez votre mot de passe :");
+    try {
+        await signInWithEmailAndPassword(auth, email, password);
+        alert("Connexion réussie !");
+    } catch (error) {
+        alert("Erreur de connexion : " + error.message);
+    }
+});
+
+document.getElementById("logout-button").addEventListener("click", async () => {
+    try {
+        await signOut(auth);
+        alert("Déconnexion réussie !");
+    } catch (error) {
+        alert("Erreur de déconnexion : " + error.message);
+    }
+});
+
+// Fonction pour récupérer une citation unique par jour
+const fetchDailyQuote = async () => {
+    try {
+        const quotesCollection = collection(db, "quotes");
+        const querySnapshot = await getDocs(quotesCollection);
+
+        const quotes = [];
+        querySnapshot.forEach((doc) => {
+            quotes.push({ id: doc.id, ...doc.data() });
+        });
+
+        if (quotes.length === 0) {
+            document.getElementById("quote-container").innerText = "Aucune citation disponible.";
+            return;
+        }
+
+        // Calculer un index unique pour la citation du jour
+        const today = new Date();
+        const totalQuotes = quotes.length;
+        const dailyIndex = today.getFullYear() * 1000 + today.getMonth() * 100 + today.getDate(); // ID unique par jour
+        const quoteIndex = dailyIndex % totalQuotes; // Index basé sur le nombre total de citations
+
+        const dailyQuote = quotes[quoteIndex];
+
+        // Afficher la citation
+        document.getElementById("quote-container").innerHTML = `
+            <p>${dailyQuote.text}</p>
+            <p><strong>${dailyQuote.author}</strong></p>
+        `;
+
+        // Mettre à jour l'ID de la citation en cours
+        currentQuoteId = dailyQuote.id;
+
+        // Charger les commentaires pour la citation
+        fetchComments();
+    } catch (error) {
+        console.error("Erreur lors du chargement de la citation :", error);
+        document.getElementById("quote-container").innerText = "Erreur lors du chargement de la citation.";
+    }
+};
+
+// Fonction pour charger les commentaires
+const fetchComments = async () => {
+    try {
+        if (!currentQuoteId) {
+            document.getElementById("comments").innerText = "Aucun commentaire disponible.";
+            return;
+        }
+
+        const commentsCollection = collection(db, "comments");
+        const q = query(commentsCollection, where("quoteId", "==", currentQuoteId));
+        const querySnapshot = await getDocs(q);
+
+        const commentsContainer = document.getElementById("comments");
+        commentsContainer.innerHTML = ""; // Réinitialiser les commentaires affichés
+
+        querySnapshot.forEach((doc) => {
+            const data = doc.data();
+            const commentElement = document.createElement("div");
+            commentElement.className = "comment";
+            commentElement.innerHTML = `
+                <p>${data.text}</p>
+                <p><small>${new Date(data.timestamp.toDate()).toLocaleString()}</small></p>
+            `;
+            commentsContainer.appendChild(commentElement);
+        });
+    } catch (error) {
+        console.error("Erreur lors du chargement des commentaires :", error);
+    }
+};
+
+// Fonction pour ajouter un commentaire
+const addComment = async () => {
+    const commentInput = document.getElementById("comment");
+    const commentText = commentInput.value.trim();
+
+    if (!commentText) {
+        alert("Veuillez entrer un commentaire.");
+        return;
+    }
+
+    if (!currentQuoteId) {
+        alert("Aucune citation sélectionnée pour ajouter un commentaire.");
+        return;
+    }
+
+    try {
+        const commentsCollection = collection(db, "comments");
+        await addDoc(commentsCollection, {
+            quoteId: currentQuoteId,
+            userId: userId,
+            text: commentText,
+            timestamp: new Date()
+        });
+
+        commentInput.value = ""; // Réinitialiser le champ de commentaire
+        fetchComments(); // Recharger les commentaires
+    } catch (error) {
+        console.error("Erreur lors de l'ajout du commentaire :", error);
+    }
+};
+
+// Fonction pour initialiser les étoiles
+const initializeStars = () => {
+    const stars = document.querySelectorAll(".star");
+    const ratingMessage = document.createElement("div");
+    ratingMessage.id = "rating-message";
+    document.getElementById("rating-container").appendChild(ratingMessage);
+
+    stars.forEach((star, index) => {
+        // Gestion du survol des étoiles
+        star.addEventListener("mouseover", () => {
+            stars.forEach((s, i) => s.classList.toggle("hovered", i <= index));
+        });
+
+        star.addEventListener("mouseout", () => {
+            stars.forEach((s) => s.classList.remove("hovered"));
+        });
+
+        // Gestion du clic pour noter
+        star.addEventListener("click", async () => {
+            const rating = index + 1;
+
+            if (!currentQuoteId) {
+                ratingMessage.innerText = "Impossible de noter sans citation.";
+                return;
+            }
+
+            if (!userId) {
+                ratingMessage.innerText = "Vous devez être connecté pour voter.";
+                return;
+            }
+
+            // Vérifier si l'utilisateur a déjà noté cette citation
+            const ratingsCollection = collection(db, "notes");
+            const q = query(ratingsCollection, where("quoteId", "==", currentQuoteId), where("userId", "==", userId));
+            const querySnapshot = await getDocs(q);
+
+            if (!querySnapshot.empty) {
+                ratingMessage.innerText = "Vous avez déjà noté cette citation.";
+                return;
+            }
+
+            // Ajouter la note dans Firebase
+            try {
+                await addDoc(ratingsCollection, {
+                    quoteId: currentQuoteId,
+                    userId: userId,
+                    rating: rating,
+                    timestamp: new Date()
+                });
+
+                // Afficher la confirmation et allumer les étoiles
+                ratingMessage.innerText = `Merci pour votre note de ${rating} étoile(s) !`;
+                stars.forEach((s, i) => s.classList.toggle("selected", i <= index));
+            } catch (error) {
+                ratingMessage.innerText = "Erreur lors de l'enregistrement de votre note.";
+                console.error(error);
+            }
+        });
     });
 };
+
+// Exécuter les fonctions au chargement
+document.addEventListener("DOMContentLoaded", () => {
+    fetchDailyQuote();
+    initializeStars();
+
+    // Associer le bouton "Envoyer" à l'ajout de commentaire
+    document.getElementById("submit-comment").addEventListener("click", addComment);
+});
+ 
