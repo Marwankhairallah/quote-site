@@ -1,12 +1,11 @@
 import { setupAuth } from "./auth.js";
-import { fetchDailyQuote } from "./quotes.js";
+import { fetchDailyQuote, currentQuoteId } from "./quotes.js";
 import { fetchComments } from "./comments.js";
 import { initializeStars } from "./ratings.js";
 
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", async () => {
     setupAuth();
-    fetchDailyQuote().then(fetchComments);
-    initializeStars();
+    await fetchDailyQuote(); // Charger la citation quotidienne
+    fetchComments(currentQuoteId); // Charger les commentaires associés à la citation
+    initializeStars(); // Initialiser les étoiles pour les notes
 });
-
-
