@@ -20,14 +20,32 @@ const fetchComments = async (currentQuoteId) => {
         for (const docSnap of querySnapshot.docs) {
             const data = docSnap.data();
 
-            // Récupérer le nom d'utilisateur à partir du userId
+            // Récupérer le nom d'utilisateur
             const userDoc = await getDoc(doc(db, "users", data.userId));
             const username = userDoc.exists() ? userDoc.data().username : "Utilisateur inconnu";
 
+            // Récupérer la note donnée par l'utilisateur
+            const notesCollection = collection(db, "notes");
+            const noteQuery = query(
+                notesCollection,
+                where("quoteId", "==", currentQuoteId),
+                where("userId", "==", data.userId)
+            );
+            const noteSnapshot = await getDocs(noteQuery);
+            const rating = !noteSnapshot.empty
+                ? noteSnapshot.docs[0].data().rating
+                : null;
+
+            const starsHtml = rating
+                ? `${"★".repeat(rating)}${"☆".repeat(5 - rating)} (${rating})`
+                : "Aucune note";
+
+            // Construire l'affichage du commentaire
             const commentElement = document.createElement("div");
             commentElement.className = "comment";
             commentElement.innerHTML = `
                 <p><strong>${username}</strong> : ${data.text}</p>
+                <p>Note : ${starsHtml}</p>
                 <p><small>${new Date(data.timestamp.toDate()).toLocaleString()}</small></p>
             `;
             commentsContainer.appendChild(commentElement);
