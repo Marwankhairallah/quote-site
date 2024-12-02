@@ -18,11 +18,10 @@ const fetchComments = async (currentQuoteId) => {
         const commentsContainer = document.getElementById("comments");
         commentsContainer.innerHTML = "";
 
-        for (const docSnap of querySnapshot.docs) {
-            const data = docSnap.data();
+        querySnapshot.forEach(async (doc) => {
+            const data = doc.data();
             const userDoc = await getDoc(doc(db, "users", data.userId)); // Récupérer le nom d'utilisateur
             const username = userDoc.exists() ? userDoc.data().username : "Utilisateur inconnu";
-
             const commentElement = document.createElement("div");
             commentElement.className = "comment";
             commentElement.innerHTML = `
@@ -30,12 +29,11 @@ const fetchComments = async (currentQuoteId) => {
                 <p><small>${new Date(data.timestamp.toDate()).toLocaleString()}</small></p>
             `;
             commentsContainer.appendChild(commentElement);
-        }
+        });
     } catch (error) {
         console.error("Erreur lors du chargement des commentaires :", error);
     }
 };
-
 
 const addComment = async (currentQuoteId) => {
     const commentInput = document.getElementById("comment");
