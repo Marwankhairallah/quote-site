@@ -1,16 +1,18 @@
 import { db } from "./firebase-config.js";
 import { collection, query, where, getDocs, addDoc } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-firestore.js";
 import { userId } from "./auth.js";
+import { currentQuoteId } from "./quotes.js";
 
-const fetchComments = async (quoteId) => {
+
+const fetchComments = async (currentQuoteId) => {
     try {
-        if (!quoteId) {
+        if (!currentQuoteId) {
             document.getElementById("comments").innerText = "Aucun commentaire disponible.";
             return;
         }
 
         const commentsCollection = collection(db, "comments");
-        const q = query(commentsCollection, where("quoteId", "==", quoteId));
+        const q = query(commentsCollection, where("quoteId", "==", currentQuoteId));
         const querySnapshot = await getDocs(q);
 
         const commentsContainer = document.getElementById("comments");
@@ -31,7 +33,7 @@ const fetchComments = async (quoteId) => {
     }
 };
 
-const addComment = async (quoteId) => {
+const addComment = async (currentQuoteId) => {
     const commentInput = document.getElementById("comment");
     const commentText = commentInput.value.trim();
 
@@ -40,7 +42,7 @@ const addComment = async (quoteId) => {
         return;
     }
 
-    if (!quoteId) {
+    if (!currentQuoteId) {
         alert("Aucune citation sélectionnée pour ajouter un commentaire.");
         return;
     }
@@ -48,14 +50,14 @@ const addComment = async (quoteId) => {
     try {
         const commentsCollection = collection(db, "comments");
         await addDoc(commentsCollection, {
-            quoteId: quoteId,
+            quoteId: currentQuoteId,
             userId: userId,
             text: commentText,
             timestamp: new Date()
         });
 
         commentInput.value = "";
-        fetchComments(quoteId);
+        fetchComments(currentQuoteId);
     } catch (error) {
         console.error("Erreur lors de l'ajout du commentaire :", error);
     }
