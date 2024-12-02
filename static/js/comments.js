@@ -1,16 +1,16 @@
 import { db } from "./firebase-config.js";
-import { collection, addDoc, query, where, getDocs } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-firestore.js";
-import { currentQuoteId } from "./quotes.js";
+import { collection, query, where, getDocs, addDoc } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-firestore.js";
+import { userId } from "./auth.js";
 
-const fetchComments = async () => {
+const fetchComments = async (quoteId) => {
     try {
-        if (!currentQuoteId) {
+        if (!quoteId) {
             document.getElementById("comments").innerText = "Aucun commentaire disponible.";
             return;
         }
 
         const commentsCollection = collection(db, "comments");
-        const q = query(commentsCollection, where("quoteId", "==", currentQuoteId));
+        const q = query(commentsCollection, where("quoteId", "==", quoteId));
         const querySnapshot = await getDocs(q);
 
         const commentsContainer = document.getElementById("comments");
@@ -31,7 +31,7 @@ const fetchComments = async () => {
     }
 };
 
-const addComment = async (userId) => {
+const addComment = async (quoteId) => {
     const commentInput = document.getElementById("comment");
     const commentText = commentInput.value.trim();
 
@@ -40,19 +40,27 @@ const addComment = async (userId) => {
         return;
     }
 
+    if (!quoteId) {
+        alert("Aucune citation sélectionnée pour ajouter un commentaire.");
+        return;
+    }
+
     try {
-        await addDoc(collection(db, "comments"), {
-            quoteId: currentQuoteId,
-            userId,
+        const commentsCollection = collection(db, "comments");
+        await addDoc(commentsCollection, {
+            quoteId: quoteId,
+            userId: userId,
             text: commentText,
             timestamp: new Date()
         });
 
         commentInput.value = "";
-        fetchComments();
+        fetchComments(quoteId);
     } catch (error) {
         console.error("Erreur lors de l'ajout du commentaire :", error);
     }
 };
+
+document.getElementById("submit-comment").addEventListener("click", () => addComment(currentQuoteId));
 
 export { fetchComments, addComment };
