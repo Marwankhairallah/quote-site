@@ -1,5 +1,5 @@
 import { db } from "./firebase-config.js";
-import { collection, query, where, getDocs, addDoc } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-firestore.js";
+import { collection, query, where, getDocs, addDoc, updateDoc, doc } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-firestore.js";
 import { userId } from "./auth.js";
 import { currentQuoteId } from "./quotes.js";
 
@@ -8,6 +8,11 @@ const initializeStars = () => {
     const ratingMessage = document.createElement("div");
     ratingMessage.id = "rating-message";
     document.getElementById("rating-container").appendChild(ratingMessage);
+
+    const averageRatingElement = document.createElement("div");
+    averageRatingElement.id = "average-rating";
+    averageRatingElement.style.display = "none"; // Masquer par défaut
+    document.getElementById("rating-container").appendChild(averageRatingElement);
 
     stars.forEach((star, index) => {
         // Gestion du survol des étoiles
@@ -43,6 +48,7 @@ const initializeStars = () => {
             }
 
             try {
+                // Ajouter la note dans la collection `notes`
                 await addDoc(ratingsCollection, {
                     quoteId: currentQuoteId,
                     userId: userId,
@@ -52,12 +58,48 @@ const initializeStars = () => {
 
                 ratingMessage.innerText = `Merci pour votre note de ${rating} étoile(s) !`;
                 stars.forEach((s, i) => s.classList.toggle("selected", i <= index));
+
+                // Mettre à jour la moyenne dans la collection `quotes`
+                await updateAverageRating();
+                displayAverageRating(averageRatingElement); // Afficher la moyenne
             } catch (error) {
                 ratingMessage.innerText = "Erreur lors de l'enregistrement de votre note.";
                 console.error(error);
             }
         });
     });
+};
+
+// Fonction pour mettre à jour la moyenne des notes
+const updateAverageRating = async () => {
+    const ratingsCollection = collection(db, "notes");
+    const q = query(ratingsCollection, where("quoteId", "==", currentQuoteId));
+    const querySnapshot = await getDocs(q);
+
+    let totalRating = 0;
+    let totalVotes = 0;
+
+    querySnapshot.forEach((doc) => {
+        totalRating += doc.data().rating;
+        totalVotes++;
+    });
+
+    const averageRating = totalVotes > 0 ? (totalRating / totalVotes).toFixed(1) : 0;
+
+    const quoteRef = doc(db, "quotes", currentQuoteId);
+    await updateDoc(quoteRef, { moyenne: averageRating });
+};
+
+// Fonction pour afficher la moyenne des notes
+const displayAverageRating = async (element) => {
+    const quoteRef = doc(db, "quotes", currentQuoteId);
+    const quoteDoc = await getDocs(quoteRef);
+
+    if (quoteDoc.exists()) {
+        const { moyenne } = quoteDoc.data();
+        element.innerHTML = `Note moyenne : <span class="average-stars">${'★'.repeat(Math.floor(moyenne))}${'☆'.repeat(5 - Math.floor(moyenne))}</span> (${moyenne})`;
+        element.style.display = "block";
+    }
 };
 
 export { initializeStars };

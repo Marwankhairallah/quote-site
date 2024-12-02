@@ -140,3 +140,15 @@ button.close-form {
 button.close-form:hover {
     background-color: #c82333;
 }
+
+#average-rating {
+    margin-top: 10px;
+    font-size: 16px;
+    color: #555;
+}
+
+.average-stars {
+    color: gold;
+    font-size: 18px;
+}
+
