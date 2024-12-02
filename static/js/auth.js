@@ -6,7 +6,7 @@ import {
     signOut,
     onAuthStateChanged
 } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-auth.js";
-import { doc, setDoc } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-firestore.js";
+import { doc, setDoc, getDoc } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-firestore.js";
 
 // Variables globales
 let userId = null;
@@ -17,9 +17,9 @@ const isValidEmail = (email) => {
     return emailRegex.test(email);
 };
 
-// Fonction pour valider les mots de passe
+// Fonction pour valider les mots de passe (avec caractères spéciaux)
 const isValidPassword = (password) => {
-    const passwordRegex = /^(?=.*[A-Z])(?=.*\d)[A-Za-z\d]{8,}$/;
+    const passwordRegex = /^(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*])[A-Za-z\d!@#$%^&*]{8,}$/;
     return passwordRegex.test(password);
 };
 
@@ -45,60 +45,61 @@ const setupAuth = () => {
     document.querySelectorAll(".close-form").forEach((button) => button.addEventListener("click", closeForms));
 
     // Gestion de l'inscription (avec validation)
-document.getElementById("signup-submit").addEventListener("click", async () => {
-    const username = document.getElementById("signup-username").value.trim();
-    const email = document.getElementById("signup-email").value.trim();
-    const password = document.getElementById("signup-password").value.trim();
-    const passwordConfirm = document.getElementById("signup-password-confirm").value.trim();
+    document.getElementById("signup-submit").addEventListener("click", async () => {
+        const username = document.getElementById("signup-username").value.trim();
+        const email = document.getElementById("signup-email").value.trim();
+        const password = document.getElementById("signup-password").value.trim();
+        const passwordConfirm = document.getElementById("signup-password-confirm").value.trim();
 
-    if (!isValidEmail(email)) {
-        showNotification("Adresse email invalide.", "error");
-        return;
-    }
+        if (!isValidEmail(email)) {
+            showNotification("Adresse email invalide.", "error");
+            return;
+        }
 
-    if (!isValidPassword(password)) {
-        showNotification("Le mot de passe doit contenir au moins 8 caractères, une lettre majuscule et un chiffre.", "error");
-        return;
-    }
+        if (!isValidPassword(password)) {
+            showNotification(
+                "Le mot de passe doit contenir au moins 8 caractères, une lettre majuscule, un chiffre et un caractère spécial.",
+                "error"
+            );
+            return;
+        }
 
-    if (password !== passwordConfirm) {
-        showNotification("Les mots de passe ne correspondent pas.", "error");
-        return;
-    }
+        if (password !== passwordConfirm) {
+            showNotification("Les mots de passe ne correspondent pas.", "error");
+            return;
+        }
 
-    try {
-        const userCredential = await createUserWithEmailAndPassword(auth, email, password);
-        const user = userCredential.user;
-        await setDoc(doc(db, "users", user.uid), { username, email });
-        showNotification("Inscription réussie !", "success");
-        closeForms();
-    } catch (error) {
-        showNotification(`Erreur : ${error.message}`, "error");
-    }
-});
+        try {
+            const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+            const user = userCredential.user;
+            await setDoc(doc(db, "users", user.uid), { username, email });
+            showNotification("Inscription réussie !", "success");
+            closeForms();
+        } catch (error) {
+            const friendlyMessage = getFriendlyErrorMessage(error.code);
+            showNotification(friendlyMessage, "error");
+        }
+    });
 
+    // Gestion de la connexion (avec validation)
+    document.getElementById("login-submit").addEventListener("click", async () => {
+        const email = document.getElementById("login-email").value.trim();
+        const password = document.getElementById("login-password").value.trim();
 
+        if (!isValidEmail(email)) {
+            showNotification("Adresse email invalide.", "error");
+            return;
+        }
 
-
-// Gestion de la connexion (avec validation)
-document.getElementById("login-submit").addEventListener("click", async () => {
-    const email = document.getElementById("login-email").value.trim();
-    const password = document.getElementById("login-password").value.trim();
-
-    if (!isValidEmail(email)) {
-        showNotification("Adresse email invalide.", "error");
-        return;
-    }
-
-    try {
-        await signInWithEmailAndPassword(auth, email, password);
-        showNotification("Connexion réussie !", "success");
-        closeForms();
-    } catch (error) {
-        showNotification(`Erreur : ${error.message}`, "error");
-    }
-});
-
+        try {
+            await signInWithEmailAndPassword(auth, email, password);
+            showNotification("Connexion réussie !", "success");
+            closeForms();
+        } catch (error) {
+            const friendlyMessage = getFriendlyErrorMessage(error.code);
+            showNotification(friendlyMessage, "error");
+        }
+    });
 
     document.getElementById("forgot-password").addEventListener("click", async () => {
         const email = prompt("Entrez votre email pour réinitialiser votre mot de passe :");
@@ -106,22 +107,24 @@ document.getElementById("login-submit").addEventListener("click", async () => {
 
         try {
             await sendPasswordResetEmail(auth, email);
-            alert("Un email de réinitialisation a été envoyé !");
+            showNotification("Un email de réinitialisation a été envoyé !", "success");
         } catch (error) {
-            alert("Erreur lors de la réinitialisation du mot de passe : " + error.message);
+            const friendlyMessage = getFriendlyErrorMessage(error.code);
+            showNotification(friendlyMessage, "error");
         }
     });
 
     document.getElementById("logout-button").addEventListener("click", async () => {
         try {
             await signOut(auth);
-            alert("Déconnexion réussie !");
+            showNotification("Vous avez été déconnecté.", "success");
         } catch (error) {
-            alert("Erreur lors de la déconnexion : " + error.message);
+            const friendlyMessage = getFriendlyErrorMessage(error.code);
+            showNotification(friendlyMessage, "error");
         }
     });
 
-    onAuthStateChanged(auth, (user) => {
+    onAuthStateChanged(auth, async (user) => {
         const userInfo = document.getElementById("user-info");
         const authButtons = document.getElementById("auth-buttons");
         const commentInput = document.getElementById("comment");
@@ -129,11 +132,16 @@ document.getElementById("login-submit").addEventListener("click", async () => {
 
         if (user) {
             userId = user.uid;
+
+            // Récupérer le nom d'utilisateur depuis Firestore
+            const userDoc = await getDoc(doc(db, "users", user.uid));
+            const username = userDoc.exists() ? userDoc.data().username : "Utilisateur";
+
             userInfo.style.display = "block";
             authButtons.style.display = "none";
             commentInput.disabled = false;
             submitCommentButton.disabled = false;
-            document.getElementById("user-email").innerText = user.email;
+            document.getElementById("user-email").innerText = `Bonjour, ${username}!`;
         } else {
             userId = null;
             userInfo.style.display = "none";
@@ -142,6 +150,22 @@ document.getElementById("login-submit").addEventListener("click", async () => {
             submitCommentButton.disabled = true;
         }
     });
+};
+
+// Messages d'erreur conviviaux
+const getFriendlyErrorMessage = (errorCode) => {
+    switch (errorCode) {
+        case "auth/email-already-in-use":
+            return "Cette adresse email est déjà utilisée.";
+        case "auth/invalid-email":
+            return "Adresse email invalide.";
+        case "auth/user-not-found":
+            return "Utilisateur introuvable.";
+        case "auth/wrong-password":
+            return "Mot de passe incorrect.";
+        default:
+            return "Une erreur est survenue. Veuillez réessayer.";
+    }
 };
 
 const showNotification = (message, type) => {
@@ -160,6 +184,5 @@ const showNotification = (message, type) => {
         notification.style.display = "none";
     }, 5000); // Cacher après 5 secondes
 };
-
 
 export { setupAuth, userId };
