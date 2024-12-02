@@ -1,8 +1,7 @@
 import { db } from "./firebase-config.js";
-import { collection, query, where, getDocs, addDoc } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-firestore.js";
+import { collection, query, where, getDocs, addDoc, doc, getDoc } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-firestore.js";
 import { userId } from "./auth.js";
 import { currentQuoteId } from "./quotes.js";
-
 
 const fetchComments = async (currentQuoteId) => {
     try {
@@ -18,10 +17,13 @@ const fetchComments = async (currentQuoteId) => {
         const commentsContainer = document.getElementById("comments");
         commentsContainer.innerHTML = "";
 
-        querySnapshot.forEach(async (doc) => {
-            const data = doc.data();
-            const userDoc = await getDoc(doc(db, "users", data.userId)); // Récupérer le nom d'utilisateur
+        for (const docSnap of querySnapshot.docs) {
+            const data = docSnap.data();
+
+            // Récupérer le nom d'utilisateur à partir du userId
+            const userDoc = await getDoc(doc(db, "users", data.userId));
             const username = userDoc.exists() ? userDoc.data().username : "Utilisateur inconnu";
+
             const commentElement = document.createElement("div");
             commentElement.className = "comment";
             commentElement.innerHTML = `
@@ -29,7 +31,7 @@ const fetchComments = async (currentQuoteId) => {
                 <p><small>${new Date(data.timestamp.toDate()).toLocaleString()}</small></p>
             `;
             commentsContainer.appendChild(commentElement);
-        });
+        }
     } catch (error) {
         console.error("Erreur lors du chargement des commentaires :", error);
     }
@@ -64,7 +66,6 @@ const addComment = async (currentQuoteId) => {
         console.error("Erreur lors de l'ajout du commentaire :", error);
     }
 };
-
 
 document.getElementById("submit-comment").addEventListener("click", () => addComment(currentQuoteId));
 
