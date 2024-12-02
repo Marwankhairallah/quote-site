@@ -1,5 +1,5 @@
 import { db } from "./firebase-config.js";
-import { collection, query, where, getDocs, addDoc, updateDoc, doc } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-firestore.js";
+import { collection, query, where, getDocs, getDoc addDoc, updateDoc, doc } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-firestore.js";
 import { userId } from "./auth.js";
 import { currentQuoteId } from "./quotes.js";
 
@@ -92,8 +92,8 @@ const updateAverageRating = async () => {
 
 // Fonction pour afficher la moyenne des notes
 const displayAverageRating = async (element) => {
-    const quoteRef = doc(db, "quotes", currentQuoteId);
-    const quoteDoc = await getDocs(quoteRef);
+    const quoteRef = doc(db, "quotes", currentQuoteId); // Référence du document
+    const quoteDoc = await getDoc(quoteRef); // Utiliser `getDoc` pour une référence de document
 
     if (quoteDoc.exists()) {
         const { moyenne } = quoteDoc.data();
