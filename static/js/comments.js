@@ -61,6 +61,7 @@ const addComment = async (quoteId) => {
     }
 };
 
+
 document.getElementById("submit-comment").addEventListener("click", () => addComment(currentQuoteId));
 
 export { fetchComments, addComment };
