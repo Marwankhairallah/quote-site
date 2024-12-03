@@ -77,4 +77,5 @@ const setupShareButtons = (quote) => {
 };
 
 
+
 export { fetchDailyQuote, currentQuoteId };
