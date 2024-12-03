@@ -61,21 +61,6 @@ const fetchDailyQuote = async () => {
     }
 };
 
-const setupShareButtons = (quote) => {
-    const quoteText = `"${quote.text}" - ${quote.author}`;
-    const encodedQuote = encodeURIComponent(quoteText);
-    const shareUrl = window.location.href; // Lien vers votre site
-    const encodedUrl = encodeURIComponent(shareUrl);
-
-    document.getElementById("share-whatsapp").href = `https://wa.me/?text=${encodedQuote}%20${encodedUrl}`;
-    document.getElementById("share-twitter").href = `https://twitter.com/intent/tweet?text=${encodedQuote}&url=${encodedUrl}`;
-    document.getElementById("share-facebook").href = `https://www.facebook.com/sharer/sharer.php?u=${encodedUrl}`;
-    document.getElementById("share-linkedin").href = `https://www.linkedin.com/sharing/share-offsite/?url=${encodedUrl}`;
-
-    // Afficher les boutons de partage
-    document.getElementById("share-buttons").style.display = "block";
-};
-
 
 
 export { fetchDailyQuote, currentQuoteId };

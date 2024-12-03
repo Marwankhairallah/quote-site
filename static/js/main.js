@@ -2,6 +2,8 @@ import { setupAuth } from "./auth.js";
 import { fetchDailyQuote, currentQuoteId } from "./quotes.js";
 import { fetchComments } from "./comments.js";
 import { initializeStars } from "./ratings.js";
+import "./share.js";
+
 
 document.addEventListener("DOMContentLoaded", async () => {
     setupAuth();
