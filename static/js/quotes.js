@@ -5,6 +5,21 @@ let currentQuoteId = null;
 
 const fetchDailyQuote = async () => {
     try {
+        // Vérifiez si une citation est déjà enregistrée pour aujourd'hui dans le localStorage
+        const savedQuote = JSON.parse(localStorage.getItem("dailyQuote"));
+        const today = new Date().toISOString().slice(0, 10); // Format : "YYYY-MM-DD"
+
+        if (savedQuote && savedQuote.date === today) {
+            // Chargez la citation depuis le localStorage
+            document.getElementById("quote-container").innerHTML = `
+                <p>${savedQuote.text}</p>
+                <p><strong>${savedQuote.author}</strong></p>
+            `;
+            currentQuoteId = savedQuote.id;
+            return;
+        }
+
+        // Sinon, chargez une nouvelle citation depuis Firebase
         const quotesCollection = collection(db, "quotes");
         const querySnapshot = await getDocs(quotesCollection);
 
@@ -16,16 +31,29 @@ const fetchDailyQuote = async () => {
             return;
         }
 
-        const today = new Date();
+        // Calculer l'index basé sur la date
         const totalQuotes = quotes.length;
-        const dailyIndex = today.getFullYear() * 1000 + today.getMonth() * 100 + today.getDate();
+        const dailyIndex = new Date().getFullYear() * 1000 + new Date().getMonth() * 100 + new Date().getDate();
         const quoteIndex = dailyIndex % totalQuotes;
 
         const dailyQuote = quotes[quoteIndex];
+
+        // Affichez la citation
         document.getElementById("quote-container").innerHTML = `
             <p>${dailyQuote.text}</p>
             <p><strong>${dailyQuote.author}</strong></p>
         `;
+
+        // Enregistrez la citation pour aujourd'hui dans le localStorage
+        localStorage.setItem(
+            "dailyQuote",
+            JSON.stringify({
+                id: dailyQuote.id,
+                text: dailyQuote.text,
+                author: dailyQuote.author,
+                date: today,
+            })
+        );
 
         currentQuoteId = dailyQuote.id;
     } catch (error) {
