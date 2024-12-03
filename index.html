@@ -41,21 +41,14 @@
             <p>Chargement de la citation...</p>
 
         </div>
-
         <div id="share-buttons">
-            <a id="share-whatsapp" target="_blank">
-                <img src="static/images/whatsapp.png" alt="Partager sur WhatsApp" title="Partager sur WhatsApp">
-            </a>
-            <a id="share-twitter" target="_blank">
-                <img src="static/images/twitter.png" alt="Partager sur Twitter" title="Partager sur Twitter">
-            </a>
-            <a id="share-facebook" target="_blank">
-                <img src="static/images/facebook.png" alt="Partager sur Facebook" title="Partager sur Facebook">
-            </a>
-            <a id="share-linkedin" target="_blank">
-                <img src="static/images/linkedin.png" alt="Partager sur LinkedIn" title="Partager sur LinkedIn">
-            </a>
+            <img src="static/images/whatsapp.png" alt="Partager sur WhatsApp" title="Partager sur WhatsApp" onclick="shareOnWhatsApp()">
+            <img src="static/images/twitter.png" alt="Partager sur Twitter" title="Partager sur Twitter" onclick="shareOnTwitter()">
+            <img src="static/images/facebook.png" alt="Partager sur Facebook" title="Partager sur Facebook" onclick="shareOnFacebook()">
+            <img src="static/images/linkedin.png" alt="Partager sur LinkedIn" title="Partager sur LinkedIn" onclick="shareOnLinkedIn()">
         </div>
+        
+        
         
         <div id="rating-container">
             <span class="stars">
@@ -81,8 +74,8 @@
     <script type="module" src="static/js/auth.js"></script>
     <script type="module" src="static/js/quotes.js"></script>
     <script type="module" src="static/js/comments.js"></script>
-    <script type="module" src="static/js/share.js"></script>
     <script type="module" src="static/js/rating.js"></script>
+    <script type="module" src="static/js/share.js"></script>
     <script type="module" src="static/js/main.js"></script>
 
 
