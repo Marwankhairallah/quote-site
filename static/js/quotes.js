@@ -14,6 +14,7 @@ const fetchDailyQuote = async () => {
             document.getElementById("quote-container").innerHTML = `
                 <p>${savedQuote.text}</p>
                 <p><strong>${savedQuote.author}</strong></p>
+                <p><em>${savedQuote.references || "Pas de référence disponible"}</em></p>
             `;
             currentQuoteId = savedQuote.id;
             return;
@@ -42,6 +43,7 @@ const fetchDailyQuote = async () => {
         document.getElementById("quote-container").innerHTML = `
             <p>${dailyQuote.text}</p>
             <p><strong>${dailyQuote.author}</strong></p>
+            <p><em>${dailyQuote.references || "Pas de référence disponible"}</em></p>
         `;
 
         // Enregistrez la citation pour aujourd'hui dans le localStorage
@@ -51,6 +53,7 @@ const fetchDailyQuote = async () => {
                 id: dailyQuote.id,
                 text: dailyQuote.text,
                 author: dailyQuote.author,
+                references: dailyQuote.references, // Ajout du champ references
                 date: today,
             })
         );
@@ -60,7 +63,5 @@ const fetchDailyQuote = async () => {
         console.error("Erreur lors du chargement de la citation :", error);
     }
 };
-
-
 
 export { fetchDailyQuote, currentQuoteId };

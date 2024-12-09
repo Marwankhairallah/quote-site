@@ -1,7 +1,7 @@
-import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-app.js";
-import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-firestore.js";
+import { initializeApp } from "firebase/app";
+import { getFirestore, collection, addDoc } from "firebase/firestore";
+import fs from "fs/promises";
 
-// Configuration Firebase (remplace avec tes clés Firebase)
 const firebaseConfig = {
     apiKey: "AIzaSyCXBfBW6bHfdiJaNmAdZ871Cmt7ZcPs-Do",
     authDomain: "quote-site-b9024.firebaseapp.com",
@@ -10,22 +10,20 @@ const firebaseConfig = {
     messagingSenderId: "777925326089",
     appId: "1:777925326089:web:04cc8b3172383e32b68fd8",
     measurementId: "G-WKZNTYXB58"
-  };
+};
 
-// Initialiser Firebase
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
-// Fonction d'importation des citations
 const importQuotes = async () => {
     try {
-        const response = await fetch('./quotes.json');
-        const quotes = await response.json();
+        const data = await fs.readFile('./quotes.json', 'utf8');
+        const quotes = JSON.parse(data);
 
-        for (let quote of quotes) {
+        for (const quote of quotes) {
             await addDoc(collection(db, "quotes"), {
                 ...quote,
-                last_used_date: quote.last_used_date || null
+                last_used_date: quote.last_used_date || null,
             });
             console.log(`Citation ajoutée : ${quote.text}`);
         }
@@ -36,5 +34,4 @@ const importQuotes = async () => {
     }
 };
 
-// Exécuter l'importation
 importQuotes();

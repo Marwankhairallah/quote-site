@@ -1,477 +1,572 @@
 [
     {
-        "text": "La vie est belle.",
+        "text": "﻿Il nous apparaît soudain que, tout au long de notre cheminement, nous n’avons pas cessé de nous métamorphoser, et que nous voilà devenus autres. Quelquefois, la métamorphose ne s’achève pas, elle nous installe dans l’hybride et nous y laisse",
+        "author": "Cheikh Hamidou Kane",
+        "reference": "L'Aventure ambiguë",
+        "last_used_date": null
+    },
+    {
+        "text": "Au fond ce n'est qu'au moment de disparaître que l'on peut enfin savoir qui on a été, la fin donne un sens à tout ce qui a précédé.",
+        "author": "Itachi Uchiha",
+        "reference": "Naruto",
+        "last_used_date": null
+    },
+    {
+        "text": "<< Qu’êtes vous venus chercher à Troie ? Je ne crois pas que ce soit la reine de Sparte ! >> << Qu’est-ce que tous les hommes recherchent ? Je le désire plus. l'immortalité >>",
+        "author": "Achille",
+        "reference": "Troie",
+        "last_used_date": null
+    },
+    {
+        "text": "Et cependant, c'est bien la liberté que Tu as mise au-dessus de tout, même dans Ton souci de leur tranquillité, même dans leur paix douce, mais un homme qui est affamé, même s'il est libre, n’a pas la force de rester libre. Ils finiront par déposer leur liberté à nos pieds et nous diront : \"Faites de nous vos esclaves, mais nourrissez-nous.\" Ils comprendront enfin eux-mêmes que la liberté et le pain terrestre pour chacun sont inconciliables, car jamais, jamais ils ne sauront se partager entre eux ce pain ! Ils comprendront aussi qu'ils ne peuvent être libres, car ils sont faibles, vicieux, misérables, et révoltés. Tu leur as promis le pain céleste, mais je le répète, est-ce le pain céleste qui peut les satisfaire ?",
+        "author": "Fiodor  Dostoïevski",
+        "reference": "Les Frères Karamazov",
+        "last_used_date": null
+    },
+    {
+        "text": "Quelle idée étrange, pourtant, que le désir, parfois, non seulement de souffrir, mais encore d'aimer la souffrance elle-même ! Oui, c'est peut-être encore plus étrange. Et vous avez beau dire, ce n'est pas seulement dû à la dépravation, à la corruption résultant de toutes ces absurdités. Ce n'est pas simplement parce qu'il me semble plus agréable d'aimer la souffrance. Non, cela vient d'un besoin profond et inexplicable, un besoin sans lequel l'homme, sans doute, cesserait d'être homme.",
+        "author": "Fiodor  Dostoïevski",
+        "reference": "Les Carnets du sous-sol",
+        "last_used_date": null
+    },
+    {
+        "text": "Savez-vous que l'on peut mourir d'une idée? Je veux dire littéralement, mourir. Mourir de tout son être, disparaître, cesser d'exister, tout cela à cause d'une seule idée. Ce n'est pas seulement la passion qui mène à l'extase et au sacrifice. Non, c'est aussi une idée, une beauté, un rêve si fort qu'il vous consume tout entier, qu'il fait exploser votre cœur, et qu'il finit par ne plus vous laisser que le vide. Alors,dites-moi, la beauté sauvera-t-elle le monde?",
+        "author": "Fiodor  Dostoïevski",
+        "reference": "L'Idiot",
+        "last_used_date": null
+    },
+    {
+        "text": "Il comprit enfin que ce n'était pas une idée, ni une théorie, mais la vie elle-même qu'il avait détruite. Oui, c'était la vie même, et il voulait y substituer son idée. Il avait voulu s'ériger en juge suprême et, pour cela, il avait tué. Et maintenant, il comprend, dans le fond de son âme, qu'il n'y a rien de plus insupportable que cette liberté sans borne. Oui, il comprenait que ce n'était pas la peur de la souffrance physique, mais bien l'angoisse de l'âme, qui constituait son véritable châtiment.",
+        "author": "Fiodor  Dostoïevski",
+        "reference": "Crime et Châtiment",
+        "last_used_date": null
+    },
+    {
+        "text": "Aimez les hommes tels qu’ils sont, même dans leur péché, car tel est le secret de l’amour véritable. Et alors, malgré toutes leurs faiblesses, malgré tout leur désespoir, vous verrez qu’ils sont dignes d’être aimés. Mais c'est là une grande science, une science difficile, et un grand amour est nécessaire, un amour actif, non passif, pour apprendre à aimer les hommes non dans leur idéal, mais tels qu'ils sont.",
+        "author": "Fiodor  Dostoïevski",
+        "reference": "Les Frères Karamazov",
+        "last_used_date": null
+    },
+    {
+        "text": "Qu'est-ce que la liberté ? répondit le moine. Elle n’est rien d’autre que la capacité de choisir entre le bien et le mal. Mais vois-tu, mon fils, les hommes n’ont jamais su porter ce fardeau. Ils recherchent la liberté et, lorsqu’ils l’obtiennent, ils en ont peur. Ils s’enfuient vers les chaînes et les illusions. Parce qu’ils croient que la liberté est insupportable. C'est pour cela qu'ils se tournent vers ceux qui leur promettent la sécurité, la nourriture et le confort. Et ils sacrifient tout pour cela, même leur âme. Voilà pourquoi tant de gens aiment leurs chaînes.",
+        "author": "Fiodor  Dostoïevski",
+        "reference": "Les Frères Karamazov",
+        "last_used_date": null
+    },
+    {
+        "text": "Il se tenait là, immobile, regardant le vide, incapable de bouger ou de parler. Ce n’était pas la peur qui le paralysait, ni même le poids de la culpabilité. C'était l'idée qu'il avait osé, qu'il avait brisé le fragile équilibre de la vie, qu'il s'était placé au-dessus de tous les hommes pour en juger un autre. Mais la réalité était différente : ce n'était pas seulement une femme qu'il avait tuée. Il avait tué en lui quelque chose d'essentiel, peut-être même la part de lui qui le rendait humain. Et cette part était irrécupérable.",
+        "author": "Fiodor  Dostoïevski",
+        "reference": "Crime et Châtiment",
+        "last_used_date": null
+    },
+    {
+        "text": "Pourquoi l'homme agit-il contre ses intérêts ? Pourquoi, alors qu'il sait que ce qu'il fait le mène à sa perte, persiste-t-il dans cette voie ? Parce qu'il ne cherche pas le bonheur, mais la vérité. Il veut savoir jusqu'où il peut aller, il veut tester les limites de sa liberté. Mais la vérité est insoutenable. Et quand il la trouve, il préfère souvent s'en détourner, la déformer, pour ne pas se détruire lui-même. Voilà pourquoi l'homme est capable des plus grandes absurdités, et voilà pourquoi il est un être irrationnel.",
+        "author": "Fiodor  Dostoïevski",
+        "reference": "Les Carnets du sous-sol",
+        "last_used_date": null
+    },
+    {
+        "text": "Pourquoi l'homme agit-il contre ses intérêts ? Pourquoi, alors qu'il sait que ce qu'il fait le mène à sa perte, persiste-t-il dans cette voie ? Parce qu'il ne cherche pas le bonheur, mais la vérité. Il veut savoir jusqu'où il peut aller, il veut tester les limites de sa liberté. Mais la vérité est insoutenable. Et quand il la trouve, il préfère souvent s'en détourner, la déformer, pour ne pas se détruire lui-même. Voilà pourquoi l'homme est capable des plus grandes absurdités, et voilà pourquoi il est un être irrationnel.",
+        "author": "Fiodor  Dostoïevski",
+        "reference": "Les Carnets du sous-sol",
+        "last_used_date": null
+    },
+    {
+        "text": "Ils ne savaient pas ce qu'ils voulaient, mais ils le voulaient avec une telle intensité qu'ils étaient prêts à tout pour l'obtenir. Leur révolution n'était pas une révolte contre l'injustice, mais une révolte contre le vide, contre l'ennui, contre leur propre existence dépourvue de sens. Ce qu'ils cherchaient, ce n'était pas un monde meilleur, mais un feu qui les consume, une cause qui les dépasse. Et ce feu, ils l'ont trouvé. Mais il les a dévorés.",
+        "author": "Fiodor  Dostoïevski",
+        "reference": "Les Démons",
+        "last_used_date": null
+    },
+    {
+        "text": "Aimez vos semblables, et aimez-les dans leur imperfection. Car, croyez-moi, ce n’est pas l’amour abstrait de l’humanité qui est difficile, mais bien l’amour concret d’un homme. Pardonnez-lui ses fautes, aimez-le dans sa faiblesse, même si cela doit vous coûter une part de vous-même. Voilà la vraie épreuve de l’amour : il ne cherche pas à transformer l’autre, mais à le comprendre, à le porter, tel qu’il est. Et si vous pouvez accomplir cela, alors vous aurez accompli tout ce que Dieu demande de vous.",
+        "author": "Fiodor  Dostoïevski",
+        "reference": "Les Frères Karamazov",
+        "last_used_date": null
+    },
+    {
+        "text": "Alors, enfin, il parla : \"Oui, je l’ai tuée, moi seul. Je l’ai fait non pas parce que j’avais faim ou besoin d’argent. Non, je l’ai tuée pour prouver que j’en étais capable. Pour prouver que j’étais un homme qui pouvait franchir cette ligne, qui pouvait oser ce que les autres n’osent pas. Mais maintenant, je vois que je n’ai rien prouvé du tout. Tout ce que j’ai prouvé, c’est que je suis faible, que je suis coupable, que je suis indigne de ce rêve que j’avais de moi-même.\" Il s’arrêta, le regard perdu, comme s’il voyait pour la première fois l’abîme qui s’ouvrait sous ses pieds.",
+        "author": "Fiodor  Dostoïevski",
+        "reference": "Crime et Châtiment",
+        "last_used_date": null
+    },
+    {
+        "text": "Ce que je suis, c’est une multitude de choses. Et tout cela ensemble, ce n’est pas réductible à une seule appartenance. Réduire mon identité à une seule de ses appartenances, c’est m’amputer d’une partie de moi-même. Mais l’identité n’est pas une juxtaposition de fragments ; elle est un tout que l’on ressent en soi-même. Ce que nous sommes, ce n’est pas une addition d’appartenances, c’est une combinaison unique, comme une recette, comme une alchimie.",
+        "author": "Amin Maalouf",
+        "reference": "Les Identités meurtrières",
+        "last_used_date": null
+    },
+    {
+        "text": "Je suis fils de la route, ma patrie est un convoi de caravanes, ma vie la plus inattendue des traversées. Je suis fils de l’exil ; tout ce que je touche aujourd’hui porte l’odeur de mes absences. Pourtant, c’est à travers ces errances que j’ai découvert une vérité simple : il n’existe pas d’homme supérieur ou inférieur. Nous sommes tous les enfants d’un même rêve, d’une même quête de lumière.",
+        "author": "Amin Maalouf",
+        "reference": "Les Échelles du Levant",
+        "last_used_date": null
+    },
+    {
+        "text": "L’amitié est une chose étrange. Elle peut survivre à des années de silence, à des désaccords, à des trahisons même. Mais parfois, un mot, une phrase, une décision peut suffire à la briser à jamais. Et c’est cela qui me fait le plus peur. Pas de perdre mes amis, mais de découvrir que je ne les ai jamais vraiment compris. Que nous étions des étrangers qui nous croisions par hasard, et qui nous sommes trompés de chemin",
+        "author": "Amin Maalouf",
+        "reference": "Les Désorientés",
+        "last_used_date": null
+    },
+    {
+        "text": "Nous vivons dans une époque de tumulte, où les empires s’effondrent et renaissent, où les villes changent de maîtres, où les frontières se déplacent comme des dunes sous le vent. Je n’ai pas choisi de naître dans ce monde mouvant, mais je dois y vivre, m’y adapter, et tenter d’y trouver un sens. Parfois, je me demande si l’Histoire a un cœur. Elle avance sans pitié, écrase les faibles, glorifie les puissants, et nous laisse avec nos doutes. Mais elle ne peut effacer nos rêves, ni la beauté que nous portons en nous.",
+        "author": "Amin Maalouf",
+        "reference": "Les Désorientés",
+        "last_used_date": null
+    },
+    {
+        "text": "J’ai appris à lire et à écrire dans les ruelles de Fès, sous les figuiers, entre les bancs des écoles coraniques et les étals des marchands. Mais ce que j’ai appris de plus précieux, ce n’était pas dans les livres. C’était dans les regards des hommes, dans leurs histoires, dans leurs gestes. Et aujourd’hui, je sais que la plus grande richesse que je peux transmettre à mes enfants, ce n’est pas un héritage de terres ou de bijoux. C’est la curiosité, cette soif de comprendre le monde, d’écouter les récits des autres et d’y trouver un écho de notre propre humanité.",
+        "author": "Amin Maalouf",
+        "reference": "Les Identités meurtrières",
+        "last_used_date": null
+    },
+    {
+        "text": "Nous sommes tous des étrangers, des  passagers dans ce vaste monde. Il n’y a pas de maison qui soit entièrement la nôtre, pas de culture qui contienne toute la vérité. Chaque civilisation a sa lumière et ses ombres. Mais ce n’est qu’en acceptant de partager cette lumière, et de reconnaître nos ombres, que nous pouvons avancer ensemble. Je suiss un homme entre deux rives, un pont entre deux mondes. Et je crois que c’est là notre mission : bâtir des ponts, non des murs.",
+        "author": "Amin Maalouf",
+        "reference": "Les Identités meurtrières",
+        "last_used_date": null
+    },
+    {
+        "text": "Je suis l’enfant de l’exil, né entre deux mondes, façonné par le départ. Grenade m’a vu naître, mais elle n’est plus ma patrie. Fès m’a accueilli, mais je ne m’y sens pas chez moi. Et partout où je vais, je porte avec moi l’ombre des lieux que j’ai quittés, comme un bagage que je ne pourrai jamais déposer. Chaque terre que je foule devient une étape, chaque maison un refuge temporaire. Je ne suis ni de l’Orient ni de l’Occident, je suis d’un entre-deux, et c’est là que réside ma vérité.",
+        "author": "Amin Maalouf",
+        "reference": "Les Désorientés",
+        "last_used_date": null
+    },
+    {
+        "text": "La ville pleurait, comme si ses pierres et ses fontaines ressentaient la même douleur que ses habitants. Les soldats sont entrés, les torches à la main, brûlant les bibliothèques, les manuscrits, les souvenirs d’une civilisation. On disait que le savoir ne pouvait brûler, qu’il survivrait dans les cœurs et les esprits, mais ce jour-là, je sentis qu’un monde s’éteignait. Grenade n’était plus une ville, elle était devenue un tombeau. Et moi, je quittai ce tombeau, emportant avec moi ses cendres.",
+        "author": "Amin Maalouf",
+        "reference": "Léon l’Africain",
+        "last_used_date": null
+    },
+    {
+        "text": "Ils m’ont tout pris : ma maison, mes terres, mes souvenirs. Mais ils n’ont pas pu me prendre ma mémoire. Car la mémoire n’appartient à personne. Elle est le dernier refuge de celui qui a tout perdu. Tant que je me souviens, Grenade vit en moi. Et tant que Grenade vit en moi, elle n’est pas morte.",
+        "author": "Amin Maalouf",
+        "reference": "Léon l’Africain",
+        "last_used_date": null
+    },
+    {
+        "text": "Les hommes que j’ai rencontrés au cours de ma vie m’ont appris plus que tous les livres que j’ai lus. Il y avait des savants, des marchands, des guerriers, des poètes. Chacun d’eux portait en lui une part de vérité, une lumière unique. Ce que j’ai compris, c’est que la sagesse n’est pas le fruit d’un savoir accumulé, mais d’un dialogue continu. Nous ne sommes que des fragments d’un tout, et ce tout ne se révèle que lorsque nous acceptons de regarder à travers les yeux de l’autre.",
+        "author": "Amin Maalouf",
+        "reference": "Les Identités meurtrières",
+        "last_used_date": null
+    },
+    {
+        "text": "Le monde est grand, et pourtant il est si petit. Où que je sois allé, j’ai trouvé les mêmes regards d’espoir, les mêmes sourires, les mêmes larmes. La peau change, la langue change, mais les rêves restent les mêmes. On veut aimer, on veut être aimé, on veut vivre dignement, on veut laisser quelque chose derrière soi. Voilà ce qui nous relie tous. Voilà ce qui fait de nous des frères, au-delà des frontières et des guerres.",
+        "author": "Amin Maalouf",
+        "reference": "Les Désorientés",
+        "last_used_date": null
+    },
+    {
+        "text": "Nous ne voulons pas seulement du pain. Nous voulons aussi la dignité. Nous voulons être respectés, non comme des machines à produire, mais comme des hommes. La faim est une douleur que nous pouvons supporter. Mais l’humiliation, la privation de notre humanité, voilà ce qui nous révolte. Et cette révolte, personne ne pourra l’arrêter, car elle est juste.",
+        "author": "Ousmane Sembène",
+        "reference": "Les Bouts de bois de Dieu",
+        "last_used_date": null
+    },
+    {
+        "text": "Il avançait lentement, toujours en regardant son ombre. Elle était là, fidèle, suivant chacun de ses pas. Mais parfois, elle semblait prendre vie, le devancer, devenir plus grande que lui-même. Il se demandait si cette ombre était un reflet de lui ou une partie de ce qu’il aurait pu être. Peut-on échapper à son ombre ? Peut-on vivre sans elle ?",
+        "author": "Boubacar Boris Diop",
+        "reference": "Le Temps de Tamango",
+        "last_used_date": null
+    },
+    {
+        "text": "Le chemin de fer n’était pas seulement des rails et des trains. C’était une artère, une veine par laquelle coulait le sang du pays, reliant les villages et les vies. Et quand cette veine s’arrêtait, tout s’arrêtait. Mais les hommes et les femmes qui la faisaient vivre n’étaient rien aux yeux de ceux qui en tiraient profit. Il fallait leur rappeler que sans eux, le train ne bougerait pas.",
+        "author": "Ousmane Sembene",
+        "reference": "Les Bouts de bois de Dieu",
+        "last_used_date": null
+    },
+    {
+        "text": "Aujourd’hui, ils me donnent une médaille. Mais cette médaille, que vaut-elle face aux années de travail, aux champs que j’ai cultivés, aux nuits que j’ai passées à trembler pour ma famille ? Cette médaille, elle brille, mais elle ne nourrit pas. Elle est un souvenir, une illusion, un mensonge. Elle est leur manière de me dire que ma vie ne vaut rien.",
+        "author": "Ferdinand Oyono",
+        "reference": "Une vie de boy",
+        "last_used_date": null
+    },
+    {
+        "text": "La forge de mon père était comme un sanctuaire. Le feu y chantait, les outils y dansaient, et chaque coup de marteau résonnait comme une prière. Je regardais mon père, fort et calme, et je voulais être comme lui. Mais en grandissant, j’ai compris que mon chemin serait différent. J’ai compris que le feu qui brûlait en moi n’était pas celui de la forge, mais celui des livres.",
+        "author": "Camara Laye",
+        "reference": "L’Enfant noir",
+        "last_used_date": null
+    },
+    {
+        "text": "La dictature n’a pas besoin de murs pour emprisonner les hommes. Elle construit des prisons dans leurs esprits, elle transforme leurs rêves en cauchemars, elle leur apprend à se trahir eux-mêmes. Mais même dans les ténèbres, il reste une lumière, un cri, une révolte. Car on ne peut pas tuer la vie.",
+        "author": "Sony Labou Tansi",
+        "reference": "La Vie et demie",
+        "last_used_date": null
+    },
+    {
+        "text": "Elle se regardait dans le miroir et voyait un visage étranger. Ce n’était pas seulement sa peau, c’était sa manière de parler, de marcher, de penser. Elle avait changé, mais elle ne savait pas si ce changement était un progrès ou une perte. Était-elle devenue quelqu’un d’autre, ou était-elle en train de perdre ce qu’elle était vraiment ?",
+        "author": "Chimamanda Ngozi Adichie",
+        "reference": "Americanah",
+        "last_used_date": null
+    },
+    {
+        "text": "Je vais te dire pourquoi tu es ici. Tu es ici parce que tu sais quelque chose. Ce que tu sais, tu ne peux pas l’expliquer, mais tu le ressens. Tu l’as ressenti toute ta vie. Quelque chose ne tourne pas rond dans ce monde. Tu ne sais pas ce que c’est, mais c’est là, comme une écharde dans ton esprit. Cela te rend fou. C’est ce sentiment qui t’a amené ici. Sais-tu de quoi je parle ? La Matrice. Elle est partout. Tout autour de nous. Même ici, dans cette pièce. Tu peux la voir quand tu regardes par la fenêtre ou quand tu allumes la télévision. Tu la ressens quand tu pars au travail, quand tu vas à l’église, quand tu paies tes impôts. C’est le monde qu’on met devant tes yeux pour t’empêcher de voir la vérité.",
+        "author": "Morpheus",
+        "reference": "The Matrix (1999)",
+        "last_used_date": null
+    },
+    {
+        "text": "La liberté est un concept étrange. Vous pouvez être libre à l'extérieur et enfermé dans votre esprit. Ou enfermé dans une cellule et pourtant totalement libre. Quand je repense à Andy, je me dis qu'il n'a jamais été emprisonné. Sa force d'esprit, son espoir, c'était sa liberté. Et maintenant, il m'a donné cet espoir. Pour la première fois depuis des décennies, je me sens libre, prêt à découvrir ce qu'il y a au bout du chemin.",
+        "author": "Stephen Edwin King",
+        "reference": "Les Évadés",
+        "last_used_date": null
+    },
+    {
+        "text": "Être incompris par les autres est une chose ; mais être incompris par soi-même, voilà ce qui me tourmente. Chaque pensée semble éclore dans un brouillard. Chaque mot que j’écris semble se heurter à un mur invisible. Mais je continue, car écrire, c’est respirer.",
+        "author": "Franz Kafka",
+        "reference": "Journal ou Lettres à Milena",
+        "last_used_date": null
+    },
+    {
+        "text": "Parfois, je me demande si ma vie a un sens. Chaque jour semble une répétition du précédent, une série de gestes mécaniques et sans but. Mais quand j’écris, c’est comme si quelque chose s’ouvrait en moi, une porte vers un autre monde. Peut-être que c’est cela, ma vie : une quête pour trouver cette porte, encore et encore.",
+        "author": "Franz kafka",
+        "reference": "Journal ou Lettres à Milena",
+        "last_used_date": null
+    },
+    {
+        "text": "Une nuit, le calife Haroun al-Rachid, déguisé en simple marchand, parcourut les rues de Bagdad pour entendre ce que son peuple disait de son règne. Il entra dans une maison où une vieille femme racontait des histoires aux enfants. \"Le calife est-il bon ?\" demanda-t-il. La vieille répondit : \"Il est juste, mais parfois, même les plus grands dirigeants ont besoin d’être rappelés à leurs devoirs.\" Intrigué par sa sagesse, Haroun décida de la récompenser et lui demanda conseil pour gouverner.",
         "author": "Inconnu",
-        "category": "Motivation",
+        "reference": "Les Mille et une Nuits",
         "last_used_date": null
     },
     {
-        "text": "L'échec est le fondement de la réussite.",
-        "author": "Lao Tseu",
-        "category": "Philosophie",
+        "text": "Quand le Calife lui dit qu'elle n'avait rien de particulier et qu'il ne comprenait pas l'attachement de Majnun, Layla lui répondit : \"Majesté, c'est parce que vous ne me regardez pas avec les yeux de Majnun\".",
+        "author": "Nizami Ganjavi",
+        "reference": "Leyla et Majnun",
         "last_used_date": null
     },
     {
-        "text": "Le courage n'est pas l'absence de peur, mais la capacité de la vaincre.",
-        "author": "Nelson Mandela",
-        "category": "Inspiration",
+        "text": "Les livres étaient tout pour moi : des amis, des mentors, des armes. Je me suis construit à travers eux. Mais, avec le temps, j’ai compris que les mots étaient à la fois ma force et ma prison. Car en lisant et en écrivant, je m'éloigne du réel, de l’action. Je devenais spectateur de ma propre vie, incapable de m’engager pleinement dans le monde. Les mots m’ont façonné, mais ils m’ont aussi enchaîné.",
+        "author": "Jean Paul Sartre",
+        "reference": "Les mots",
         "last_used_date": null
     },
     {
-        "text": "Ce n'est pas parce que les choses sont difficiles que nous n'osons pas, c'est parce que nous n'osons pas qu'elles sont difficiles.",
-        "author": "Sénèque",
-        "category": "Motivation",
-        "last_used_date": null
-    },
-    {
-        "text": "Le bonheur n'est pas quelque chose de prêt à l'emploi. Il découle de vos propres actions.",
-        "author": "Dalaï Lama",
-        "category": "Bonheur",
-        "last_used_date": null
-    },
-    {
-        "text": "Le succès est la somme de petits efforts répétés jour après jour.",
-        "author": "Robert Collier",
-        "category": "Motivation",
-        "last_used_date": null
-    },
-    {
-        "text": "L'éducation est l'arme la plus puissante pour changer le monde.",
-        "author": "Nelson Mandela",
-        "category": "Éducation",
-        "last_used_date": null
-    },
-    {
-        "text": "La meilleure façon de prédire l'avenir est de le créer.",
-        "author": "Peter Drucker",
-        "category": "Inspiration",
-        "last_used_date": null
-    },
-    {
-        "text": "Ne crains pas d’échouer, crains de ne pas essayer.",
-        "author": "Inconnu",
-        "category": "Motivation",
-        "last_used_date": null
-    },
-    {
-        "text": "L'imagination est plus importante que le savoir.",
-        "author": "Albert Einstein",
-        "category": "Créativité",
-        "last_used_date": null
-    },
-    {
-        "text": "Soyez vous-même, tous les autres sont déjà pris.",
-        "author": "Oscar Wilde",
-        "category": "Inspiration",
-        "last_used_date": null
-    },
-    {
-        "text": "Le temps que vous aimez perdre n'est pas du temps perdu.",
-        "author": "Bertrand Russell",
-        "category": "Philosophie",
-        "last_used_date": null
-    },
-    {
-        "text": "Rien n'est permanent, sauf le changement.",
-        "author": "Héraclite",
-        "category": "Philosophie",
-        "last_used_date": null
-    },
-    {
-        "text": "Il est toujours temps de devenir ce que nous aurions pu être.",
-        "author": "George Eliot",
-        "category": "Motivation",
-        "last_used_date": null
-    },
-    {
-        "text": "Le bonheur est un voyage, pas une destination.",
-        "author": "Inconnu",
-        "category": "Bonheur",
-        "last_used_date": null
-    },
-    {
-        "text": "L'esprit qui s'ouvre à une nouvelle idée ne revient jamais à sa taille d'origine.",
-        "author": "Albert Einstein",
-        "category": "Inspiration",
-        "last_used_date": null
-    },
-    {
-        "text": "Tout ce que vous pouvez imaginer est réel.",
-        "author": "Pablo Picasso",
-        "category": "Créativité",
-        "last_used_date": null
-    },
-    {
-        "text": "Le seul moyen de faire du bon travail est d’aimer ce que vous faites.",
-        "author": "Steve Jobs",
-        "category": "Motivation",
-        "last_used_date": null
-    },
-    {
-        "text": "Celui qui ouvre une porte d'école ferme une prison.",
-        "author": "Victor Hugo",
-        "category": "Éducation",
-        "last_used_date": null
-    },
-    {
-        "text": "Les grandes choses ne se font pas par impulsion, mais par une série de petites choses assemblées.",
-        "author": "Vincent Van Gogh",
-        "category": "Motivation",
-        "last_used_date": null
-    },
-    {
-        "text": "La simplicité est la sophistication suprême.",
-        "author": "Léonard de Vinci",
-        "category": "Philosophie",
-        "last_used_date": null
-    },
-    {
-        "text": "Tout le monde pense à changer le monde, mais personne ne pense à se changer lui-même.",
-        "author": "Léon Tolstoï",
-        "category": "Réflexion",
-        "last_used_date": null
-    },
-    {
-        "text": "Ceux qui ne se souviennent pas du passé sont condamnés à le répéter.",
-        "author": "George Santayana",
-        "category": "Histoire",
-        "last_used_date": null
-    },
-    {
-        "text": "Il n'y a qu'une seule façon d'éviter les critiques : ne rien faire, ne rien dire, et n'être rien.",
-        "author": "Aristote",
-        "category": "Motivation",
-        "last_used_date": null
-    },
-    {
-        "text": "Soyez le changement que vous voulez voir dans le monde.",
-        "author": "Mahatma Gandhi",
-        "category": "Inspiration",
-        "last_used_date": null
-    },
-    {
-        "text": "L'esprit est comme un parachute, il fonctionne mieux quand il est ouvert.",
-        "author": "Frank Zappa",
-        "category": "Créativité",
-        "last_used_date": null
-    },
-    {
-        "text": "Un voyage de mille lieues commence toujours par un premier pas.",
-        "author": "Lao Tseu",
-        "category": "Motivation",
-        "last_used_date": null
-    },
-    {
-        "text": "Le bonheur est réel seulement quand il est partagé.",
-        "author": "Christopher McCandless",
-        "category": "Bonheur",
-        "last_used_date": null
-    },
-    {
-        "text": "Ce que l'on conçoit bien s'énonce clairement, et les mots pour le dire arrivent aisément.",
-        "author": "Nicolas Boileau",
-        "category": "Clarté",
-        "last_used_date": null
-    },
-    {
-        "text": "La vraie générosité envers l'avenir consiste à tout donner au présent.",
+        "text": "Vous savez, Rieux, ce que vous venez de faire ? Vous venez de sauver un homme. Mais, vous ne l'avez pas sauvé de la mort. Non, vous l'avez sauvé de l'oubli. Voilà ce que nous sommes, docteur : des hommes qui luttons contre la mort et qui savons que, tôt ou tard, elle triomphera. Et pourtant, nous luttons, encore et toujours, parce que refuser de lutter, ce serait déjà mourir.",
         "author": "Albert Camus",
-        "category": "Philosophie",
+        "reference": "La Peste",
         "last_used_date": null
     },
     {
-        "text": "La vie est un mystère qu'il faut vivre, et non un problème à résoudre.",
-        "author": "Gandhi",
-        "category": "Philosophie",
+        "text": "Dans l'âme des gens, les graines de la colère grandissent, et elles grossissent, et elles poussent… Il y a un cri pour la terre, pour l’eau, pour un abri, pour un peu de dignité. Et ce cri s’étend, il se propage, il grandit, jusqu’à ce qu’un jour, il devienne un torrent. Et alors, ce ne sera plus un cri, mais un rugissement.",
+        "author": "John Steinbeck",
+        "reference": "Les Raisins de la colère",
         "last_used_date": null
     },
     {
-        "text": "La seule chose que nous ayons à craindre, c'est la peur elle-même.",
-        "author": "Franklin D. Roosevelt",
-        "category": "Motivation",
+        "text": "Tout homme a, à terre ou en mer, un Nantucket au fond du cœur, une île solitaire et inatteignable. Un lieu secret où il cherche refuge, mais qu’il ne peut jamais réellement atteindre. La quête du capitaine Achab, c’est cette même quête : celle de l’absolu.",
+        "author": "Herman Melville",
+        "reference": "Moby Dick",
         "last_used_date": null
     },
     {
-        "text": "La seule façon de faire du bon travail est d'aimer ce que vous faites.",
-        "author": "Steve Jobs",
-        "category": "Motivation",
+        "text": "L’homme n’est pas fait pour la défaite. Un homme peut être détruit, mais pas vaincu. C’est ce que je suis, pensa-t-il. Un vieil homme, seul, dans un monde vaste et indifférent. Mais tant que je peux me battre, tant que je peux espérer, je suis vivant.",
+        "author": "Ernest hemingway",
+        "reference": "Le Vieil Homme et la Mer",
         "last_used_date": null
     },
     {
-        "text": "La seule limite à notre réalisation de demain sera nos doutes d'aujourd'hui.",
-        "author": "Franklin D. Roosevelt",
-        "category": "Motivation",
-        "last_used_date": null
-    },
-    {
-        "text": "La seule chose qui se trouve entre vous et votre rêve, c'est l'histoire que vous racontez à vous-même.",
-        "author": "Jordan Belfort",
-        "category": "Motivation",
-        "last_used_date": null
-    },
-    {
-        "text": "La seule façon de prédire l'avenir est de le créer.",
-        "author": "Peter Drucker",
-        "category": "Inspiration",
-        "last_used_date": null
-    },
-    {
-        "text": "La seule façon de faire du bon travail est d'aimer ce que vous faites.",
-        "author": "Steve Jobs",
-        "category": "Motivation",
-        "last_used_date": null
-    },
-    {
-        "text": "La seule limite à notre réalisation de demain sera nos doutes d'aujourd'hui.",
-        "author": "Franklin D. Roosevelt",
-        "category": "Motivation",
-        "last_used_date": null
-    },
-    {
-        "text": "La seule chose qui se trouve entre vous et votre rêve, c'est l'histoire que vous racontez à vous-même.",
-        "author": "Jordan Belfort",
-        "category": "Motivation",
-        "last_used_date": null
-    },
-    {
-        "text": "La vie, c’est comme une bicyclette, il faut avancer pour ne pas perdre l’équilibre.",
-        "author": "Albert Einstein",
-        "category": "Inspiration",
-        "last_used_date": null
-    },
-    {
-        "text": "Le véritable voyage de découverte ne consiste pas à chercher de nouveaux paysages, mais à avoir de nouveaux yeux.",
-        "author": "Marcel Proust",
-        "category": "Réflexion",
-        "last_used_date": null
-    },
-    {
-        "text": "Apprends comme si tu devais vivre pour toujours, vis comme si tu devais mourir demain.",
-        "author": "Mahatma Gandhi",
-        "category": "Éducation",
-        "last_used_date": null
-    },
-    {
-        "text": "Ce n'est pas ce que vous regardez qui compte, c'est ce que vous voyez.",
-        "author": "Henry David Thoreau",
-        "category": "Réflexion",
-        "last_used_date": null
-    },
-    {
-        "text": "Il n'y a qu'une réussite : être capable de vivre sa vie à sa manière.",
-        "author": "Christopher Morley",
-        "category": "Bonheur",
-        "last_used_date": null
-    },
-    {
-        "text": "Ce qui ne nous tue pas nous rend plus forts.",
-        "author": "Friedrich Nietzsche",
-        "category": "Motivation",
-        "last_used_date": null
-    },
-    {
-        "text": "Si tu veux aller vite, marche seul. Si tu veux aller loin, marche ensemble.",
-        "author": "Proverbe africain",
-        "category": "Inspiration",
-        "last_used_date": null
-    },
-    {
-        "text": "La patience est amère, mais son fruit est doux.",
-        "author": "Jean-Jacques Rousseau",
-        "category": "Philosophie",
-        "last_used_date": null
-    },
-    {
-        "text": "Les opportunités ne se produisent pas. Vous les créez.",
-        "author": "Chris Grosser",
-        "category": "Motivation",
-        "last_used_date": null
-    },
-    {
-        "text": "Faites toujours de votre mieux. Ce que vous plantez maintenant, vous le récolterez plus tard.",
-        "author": "Og Mandino",
-        "category": "Inspiration",
-        "last_used_date": null
-    },
-    {
-        "text": "On ne voit bien qu’avec le cœur. L’essentiel est invisible pour les yeux.",
-        "author": "Antoine de Saint-Exupéry",
-        "category": "Réflexion",
-        "last_used_date": null
-    },
-    {
-        "text": "Chaque difficulté rencontrée doit être l’occasion d’un nouveau progrès.",
-        "author": "Pierre de Coubertin",
-        "category": "Motivation",
-        "last_used_date": null
-    },
-    {
-        "text": "L’art de la réussite consiste à savoir s’entourer des meilleurs.",
-        "author": "John Fitzgerald Kennedy",
-        "category": "Inspiration",
-        "last_used_date": null
-    },
-    {
-        "text": "La liberté commence là où l’ignorance finit.",
-        "author": "Victor Hugo",
-        "category": "Philosophie",
-        "last_used_date": null
-    },
-    {
-        "text": "Tout est possible à qui rêve, ose, travaille et n’abandonne jamais.",
-        "author": "Xavier Dolan",
-        "category": "Motivation",
-        "last_used_date": null
-    },
-    {
-        "text": "La beauté commence au moment où vous décidez d’être vous-même.",
-        "author": "Coco Chanel",
-        "category": "Inspiration",
-        "last_used_date": null
-    },
-    {
-        "text": "Le plus grand échec est de ne pas avoir le courage d’oser.",
-        "author": "Abraham Lincoln",
-        "category": "Motivation",
-        "last_used_date": null
-    },
-    {
-        "text": "L’esprit humain, une fois étiré par une idée nouvelle, ne revient jamais à ses dimensions initiales.",
-        "author": "Oliver Wendell Holmes",
-        "category": "Créativité",
-        "last_used_date": null
-    },
-    {
-        "text": "Le bonheur ne se trouve pas au sommet de la montagne, mais dans la façon de la gravir.",
-        "author": "Confucius",
-        "category": "Philosophie",
-        "last_used_date": null
-    },
-    {
-        "text": "Rien n’est jamais acquis, il faut le mériter chaque jour.",
-        "author": "André Gide",
-        "category": "Réflexion",
-        "last_used_date": null
-    },
-    {
-        "text": "Les seules limites de nos réalisations de demain, ce sont nos doutes d’aujourd’hui.",
-        "author": "Franklin D. Roosevelt",
-        "category": "Motivation",
-        "last_used_date": null
-    },
-    {
-        "text": "Agissez comme s’il était impossible d’échouer.",
-        "author": "Winston Churchill",
-        "category": "Inspiration",
-        "last_used_date": null
-    },
-    {
-        "text": "Votre temps est limité, ne le gâchez pas en menant une existence qui n’est pas la vôtre.",
-        "author": "Steve Jobs",
-        "category": "Motivation",
-        "last_used_date": null
-    },
-    {
-        "text": "Rêvez grand et osez échouer.",
-        "author": "Norman Vaughan",
-        "category": "Inspiration",
-        "last_used_date": null
-    },
-    {
-        "text": "Il faut viser la lune, parce qu’au moins, si vous échouez, vous finirez dans les étoiles.",
-        "author": "Oscar Wilde",
-        "category": "Motivation",
-        "last_used_date": null
-    },
-    {
-        "text": "La vie n’est pas d’attendre que l’orage passe, mais d’apprendre à danser sous la pluie.",
-        "author": "Vivian Greene",
-        "category": "Inspiration",
-        "last_used_date": null
-    },
-    {
-        "text": "Faites de votre vie un rêve, et d’un rêve, une réalité.",
-        "author": "Antoine de Saint-Exupéry",
-        "category": "Motivation",
-        "last_used_date": null
-    },
-    {
-        "text": "La différence entre un rêve et un projet, c’est une date.",
-        "author": "Walt Disney",
-        "category": "Motivation",
-        "last_used_date": null
-    },
-    {
-        "text": "Ce n’est pas la force, mais la persévérance, qui fait les grandes œuvres.",
-        "author": "Samuel Johnson",
-        "category": "Motivation",
-        "last_used_date": null
-    },
-    {
-        "text": "Si vous tombez sept fois, relevez-vous huit fois.",
-        "author": "Proverbe japonais",
-        "category": "Motivation",
-        "last_used_date": null
-    },
-    {
-        "text": "Le secret pour aller de l’avant, c’est de commencer.",
+        "text": "Tom réfléchit à l'idée qu'il avait eue : un moyen de rendre le travail agréable. En montrant qu'il était fier de peindre cette clôture, il avait fait croire aux autres garçons que c'était un privilège. Et ils étaient prêts à payer pour l’obtenir. Tom avait découvert un grand principe : dans ce monde, le travail n'est que ce qu'on en fait.",
         "author": "Mark Twain",
-        "category": "Motivation",
+        "reference": "Les Aventures de Tom Sawyer",
         "last_used_date": null
     },
     {
-        "text": "Le futur appartient à ceux qui croient à la beauté de leurs rêves.",
-        "author": "Eleanor Roosevelt",
-        "category": "Inspiration",
+        "text": "Si tout périssait, mais que lui restait, je continuerais d’exister ; mais si tout restait, sauf lui, je deviendrais une étrangère dans ce monde",
+        "author": "Emily Brontë",
+        "reference": "Les Hauts de Hurlevent",
         "last_used_date": null
     },
     {
-        "text": "Commencez où vous êtes, utilisez ce que vous avez, faites ce que vous pouvez.",
-        "author": "Arthur Ashe",
-        "category": "Motivation",
+        "text": "Si tu connais l’ennemi et que tu te connais toi-même, tu n’as pas à craindre le résultat de cent batailles.Si tu te connais toi-même mais pas l’ennemi, pour chaque victoire remportée tu subiras également une défaite. Si tu ne connais ni l’ennemi ni toi-même, tu perdras toutes les batailles.",
+        "author": "Sun Tzu",
+        "reference": "L'Art de la guerre",
         "last_used_date": null
     },
     {
-        "text": "Vous ne pouvez pas changer votre avenir, mais vous pouvez changer vos habitudes, et vos habitudes changeront votre avenir.",
-        "author": "A.P.J. Abdul Kalam",
-        "category": "Réflexion",
+        "text": "Sois extrêmement subtil, jusqu'à l'informe.Sois extrêmement mystérieux, jusqu'à l'inaudible. Ainsi, tu obtiendras la destinée de tes adversaires.",
+        "author": "Sun Tzu",
+        "reference": "L'Art de la guerre",
         "last_used_date": null
     },
     {
-        "text": "La réussite est liée à l’action. Les hommes qui réussissent continuent à bouger.",
-        "author": "Conrad Hilton",
-        "category": "Motivation",
+        "text": "Remporter cent victoires en cent batailles n'est pas le summum de l'excellence. Soumettre l’ennemi sans combattre est le summum de l’excellence.",
+        "author": "Sun Tzu",
+        "reference": "L'Art de la guerre",
         "last_used_date": null
     },
     {
-        "text": "Le plus grand risque est de ne prendre aucun risque.",
-        "author": "Mark Zuckerberg",
-        "category": "Inspiration",
+        "text": "Ce n’est pas mon combat. Ce n’est pas ma guerre. Agamemnon peut garder sa couronne. Je suis ici pour ma propre gloire.",
+        "author": "Achille",
+        "reference": "L'Iliade d'Homère",
         "last_used_date": null
     },
     {
-        "text": "Si vous voulez accomplir quelque chose que vous n’avez jamais fait, vous devez être prêt à faire quelque chose que vous n’avez jamais essayé.",
-        "author": "Thomas Jefferson",
-        "category": "Motivation",
+        "text": "J’ai vu des royaumes prospères sombrer dans la décadence, non à cause des ennemis extérieurs, mais à cause de l’injustice, de l’orgueil et de l’oubli des vertus.",
+        "author": "Ibn Battuta",
+        "reference": "Voyages",
         "last_used_date": null
     },
     {
-        "text": "Ne regardez pas l’escalier tout entier, concentrez-vous sur la première marche.",
-        "author": "Martin Luther King Jr.",
-        "category": "Motivation",
+        "text": "Les chemins que j’ai parcourus étaient souvent imprévisibles, les dangers fréquents. Mais à chaque étape, ma foi était mon étoile. Elle m’a guidé dans les moments d’obscurité, comme un phare éclaire une mer agitée.",
+        "author": "Ibn Battuta",
+        "reference": "Voyages",
         "last_used_date": null
     },
     {
-        "text": "Vos rêves n’ont pas de date d’expiration. Respirez profondément et essayez à nouveau.",
+        "text": "Un voyageur ne doit pas seulement marcher ; il doit écouter. Il doit observer les gestes simples, les mots échangés, les rites pratiqués, car c’est dans ces détails qu’il découvre l’âme d’un peuple.",
+        "author": "Ibn Battuta",
+        "reference": "Voyages",
+        "last_used_date": null
+    },
+    {
+        "text": "Les voyages m’ont appris tant de choses qu’il aurait été égoïste de les garder pour moi. Écrire et transmettre ce que j’ai vu, c’est prolonger la vie des lieux et des peuples que j’ai rencontrés.",
+        "author": "Ibn Battuta",
+        "reference": "Voyages",
+        "last_used_date": null
+    },
+    {
+        "text": "Dans une mosquée de Damas, j’ai rencontré un vieil homme qui passait ses journées à méditer et à prier. Je lui ai demandé s’il ne regrettait pas de ne pas voir le monde, de ne pas voyager comme je le faisais. Il m’a répondu : \"Mon fils, le monde est dans chaque grain de sable, chaque goutte d’eau, chaque verset que je récite. En apprenant à contempler ce qui est proche, tu comprendras ce qui est loin.\" Ces mots m’ont appris que la quête intérieure est aussi importante que celle des horizons lointains.",
+        "author": "Ibn Battuta",
+        "reference": "Voyages",
+        "last_used_date": null
+    },
+    {
+        "text": "À Delhi, j’ai vu un sultan d’une générosité sans pareille, distribuant des richesses à ses sujets et récompensant les savants. Mais j’ai aussi vu cet homme punir sans pitié, frapper avec une main de fer ceux qu’il jugeait infidèles à ses ordres. Cela m’a appris que le pouvoir est un outil à double tranchant. Lorsqu’il est guidé par la justice, il élève un peuple. Mais lorsqu’il est corrompu par l’arrogance ou la peur, il devient un poison qui détruit même les plus grandes civilisations.",
+        "author": "Ibn Battuta",
+        "reference": "Voyages",
+        "last_used_date": null
+    },
+    {
+        "text": "Dans les îles Maldives, les coutumes diffèrent des nôtres d’une manière qui m’a d’abord surpris. Les femmes y portent des vêtements légers, et les hommes semblent à l’aise dans cette simplicité. J’ai appris à ne pas juger selon mes propres normes, mais à chercher la sagesse dans leurs pratiques. Leur respect pour la mer, leur vénération pour les ancêtres, leur amour des récits sont autant de trésors que j’ai découverts. Chaque culture, même la plus éloignée de la nôtre, détient une parcelle de vérité que nous gagnerions à comprendre.",
+        "author": "Ibn Battuta",
+        "reference": "Voyages",
+        "last_used_date": null
+    },
+    {
+        "text": "La traversée du désert n’est pas seulement une lutte contre la chaleur et la soif ; c’est une confrontation avec soi-même. Lorsque tout autour de toi est vide, tu te retrouves face à toi-même, dépouillé de tout artifice. J’ai appris que dans ce vide, il y a une richesse : celle de l’âme. Et c’est dans ces moments, où la survie elle-même devient incertaine, que l’on découvre la vraie valeur de la foi. Elle est le seul oasis dans l’immensité.",
+        "author": "Ibn Battuta",
+        "reference": "Voyages",
+        "last_used_date": null
+    },
+    {
+        "text": "Dans une ville du Yémen, j’ai rencontré un homme dont les vêtements étaient usés et dont la demeure était modeste. Mais lorsqu’il parlait, il captivait tous ceux qui l’écoutaient. Il possédait une érudition rare, et les jeunes venaient de loin pour apprendre de lui. Cela m’a appris que la richesse véritable n’est pas dans les possessions matérielles, mais dans la lumière que l’on porte en soi et que l’on transmet aux autres.",
+        "author": "Ibn Battuta",
+        "reference": "Voyages",
+        "last_used_date": null
+    },
+    {
+        "text": "J’ai vu des rois puissants et des marchands riches disparaître sans laisser de trace, tandis que des hommes humbles, par leur sagesse ou leur bonté, laissent une empreinte indélébile. Cela m’a appris que ce qui compte, ce n’est pas ce que nous possédons, mais ce que nous faisons pour les autres. Car les possessions s’effacent, mais les actes justes survivent à notre propre vie.",
+        "author": "Ibn Battuta",
+        "reference": "Voyages",
+        "last_used_date": null
+    },
+    {
+        "text": "Ô mon roi, la vie est comme un conte : elle est belle tant qu’on la raconte avec passion. Mais un conte ne finit bien que si l’on sait écouter et attendre la fin.",
+        "author": "Shahrazade",
+        "reference": "Mille et une Nuits",
+        "last_used_date": null
+    },
+    {
+        "text": "L’histoire n’est pas simplement un récit des événements passés. Elle est une science qui éclaire les lois immuables qui gouvernent les sociétés. Les civilisations naissent comme un enfant qui grandit : elles passent par une phase de jeunesse, où elles sont vigoureuses et pleines d’ambition, puis par une phase de maturité, où elles atteignent leur apogée. Mais après cette maturité vient la vieillesse, où l’excès de luxe et la corruption les affaiblissent. Ainsi, les royaumes tombent comme tombent les feuilles en automne. Ce cycle est inévitable. Mais l’homme sage n’est pas celui qui s’effondre avec les ruines. Il est celui qui comprend ce cycle et s’adapte, car il sait que la véritable force réside non dans la richesse matérielle ou le pouvoir politique, mais dans la préservation des valeurs morales et spirituelles.",
+        "author": "Ibn Khaldoun",
+        "reference": "Prolégomènes",
+        "last_used_date": null
+    },
+    {
+        "text": "Schéhérazade répondit au roi : \"Ô mon seigneur, sache que la vie est comme un fleuve qui coule sans fin. Chaque jour, il emporte avec lui un peu de ce que nous sommes, et pourtant il nous donne toujours quelque chose de nouveau. Ce que je te raconte chaque nuit n’est pas seulement un divertissement, mais une leçon pour l’âme. Car chaque histoire, qu’elle soit joyeuse ou tragique, contient un secret. Ce secret est que la vie elle-même est un conte, et que nous sommes tous des personnages dans cette grande épopée. Et comme tout conte, la vie a une fin. Mais cette fin ne doit pas nous effrayer, car elle donne un sens à tout ce qui la précède. Alors, écoute mes récits, non comme un roi, mais comme un homme qui cherche à comprendre le sens de son propre voyage.",
         "author": "Inconnu",
-        "category": "Inspiration",
+        "reference": "Les Mille et Une Nuits",
         "last_used_date": null
     },
     {
-        "text": "Le succès n’est pas final, l’échec n’est pas fatal : c’est le courage de continuer qui compte.",
-        "author": "Winston Churchill",
-        "category": "Motivation",
+        "text": "Les oiseaux s’assemblèrent, venus de toutes les contrées, pour discuter de leur quête. L’hirondelle dit : ‘Nous devons trouver notre roi, le Simorgh, car il est la réponse à tous nos maux.’ Le faucon répliqua : ‘Mais ce chemin est dangereux. Nous devrons traverser sept vallées, chacune plus difficile que la précédente.’ Alors le rossignol s’exclama : ‘Et si, en chemin, nous découvrons que le Simorgh n’est pas à l’extérieur, mais en nous-mêmes ?’ Les oiseaux partirent malgré tout, et à chaque vallée, certains abandonnèrent. Mais ceux qui atteignirent la fin virent leur propre reflet dans le Simorgh. Car ils comprirent que le roi qu’ils cherchaient était leur propre âme, purifiée par l’épreuve.",
+        "author": "Attar",
+        "reference": "La Conférence des Oiseaux",
         "last_used_date": null
-    }   
-
+    },
+    {
+        "text": "La richesse, dit le mendiant au roi, n’est pas dans l’or que tu possèdes, mais dans le cœur tranquille. J’ai dormi sous les étoiles, et j’ai trouvé la paix que tes palais ne peuvent m’offrir. J’ai partagé un morceau de pain avec un frère, et ce repas était plus doux que tes festins. Si tu veux être riche, ô roi, apprends à te contenter. Car celui qui désire sans fin est le plus pauvre des hommes.’ Le roi, ébranlé par ces paroles, comprit que le mendiant possédait un trésor que tout son or ne pouvait acheter.",
+        "author": "Inconnu",
+        "reference": "Mille  et une Nuits",
+        "last_used_date": null
+    },
+    {
+        "text": "L’amour est une science que l’on ne peut apprendre dans les livres, mais dans les battements du cœur. Il est une flamme qui éclaire, mais qui brûle aussi. Celui qui aime véritablement s’oublie lui-même pour l’être aimé. Et dans cet oubli, il trouve sa véritable nature. Car aimer, c’est se libérer des chaînes de l’égoïsme, c’est s’ouvrir à une vérité plus grande que soi. Mais l’amour n’est pas sans épreuves : il exige patience, sincérité, et parfois renoncement. Celui qui traverse ces épreuves, cependant, découvre que l’amour est la plus noble des quêtes.",
+        "author": "Ibn Hazm",
+        "reference": "Le Collier de la Colombe",
+        "last_used_date": null
+    },
+    {
+        "text": "Il y a des endroits dans ce monde qui ne sont pas faits de pierre. Il y a quelque chose en nous qu’ils ne peuvent pas atteindre, qu’ils ne peuvent pas toucher. L’espoir.",
+        "author": "Andy Dufresne",
+        "reference": "Les Évadés (1994)",
+        "last_used_date": null
+    },
+    {
+        "text": "Ce que nous faisons dans cette vie résonne dans l’éternité.",
+        "author": "Maximus",
+        "reference": "Gladiator (2000)",
+        "last_used_date": null
+    },
+    {
+        "text": "Ce n’est pas la force des coups que tu peux donner, mais combien de coups tu peux encaisser tout en continuant à avancer. C’est comme ça qu’on gagne.",
+        "author": "Rocky Balboa",
+        "reference": "Rocky Balboa (2006)",
+        "last_used_date": null
+    },
+    {
+        "text": "Si tu restes à Larissa tu vivras en paix. Tu trouveras une femme merveilleuse. Tu auras des enfants qui à leur tour auront des enfants. Ils se souviendront de toi. Mais après cette génération ton nom sera oublié. Si tu te rends à Troie, tu connaîtras la gloire. On écrira l’histoire de tes exploits pour les milliers d'années à venir. Le monde n’oubliera jamais ton nom. Mais si tu te rends à Troie tu ne reviendras jamais. La gloire n’a d’autre prix que celui de marcher aux côté de ta mort.",
+        "author": "Thétis",
+        "reference": "Troie (2004)",
+        "last_used_date": null
+    },
+    {
+        "text": "Gagner ce billet, Rose, a été la meilleure chose qui me soit arrivée. Il m’a conduit à toi. Et je suis reconnaissant pour chaque instant que nous avons partagé, peu importe la fin.",
+        "author": "Jack Dawson",
+        "reference": "Titanic (1997)",
+        "last_used_date": null
+    },
+    {
+        "text": "Une idée, une fois implantée dans l’esprit, peut grandir et devenir plus puissante qu’on ne l’aurait imaginé.",
+        "author": "Dom Cobb",
+        "reference": "Inception (2010)",
+        "last_used_date": null
+    },
+    {
+        "text": "Chaque magie a trois actes : la promesse, le tour, et enfin, le prestige. Mais le véritable secret, ce n’est pas le truc. C’est l’illusion que vous créez et que les gens veulent croire.",
+        "author": "Cutter",
+        "reference": "Le Prestige (2006)",
+        "last_used_date": null
+    },
+    {
+        "text": "Si grand sont les mystères du coeur humain, qu' il est difficile pour l' historien que je suis à percer leur secret",
+        "author": "Fundi Romaine",
+        "reference": "Texte historique.",
+        "last_used_date": null
+    },
+    {
+        "text": "J'ai commencé à me sentir mal à l’idée de trahir Jim. J’étais censé écrire une lettre pour le dénoncer. Mais alors que je tenais le papier et le crayon, quelque chose en moi s’est révolté. J’ai pensé à tout ce qu’il avait fait pour moi, à la façon dont il m’avait protégé, et à quel point il voulait être libre. J’ai déchiré la lettre et j’ai dit : \"Très bien, je vais aller en enfer.\" Et c’était décidé. Jim était mon ami. Je ne pouvais pas le trahir.",
+        "author": "Mark Twain",
+        "reference": "Les Aventures de Huckleberry Finn",
+        "last_used_date": null
+    },
+    {
+        "text": "Mais il y avait une chose que je savais : au-delà de tout ce qu’on pouvait dire ou faire, mon père, Atticus Finch, était un homme que je ne cesserai jamais d’admirer. Non pas parce qu’il était parfait, mais parce qu’il avait le courage de défendre ce qui est juste, même quand tout le monde le condamnait. Il m’a appris que parfois, la vraie victoire ne réside pas dans le fait de gagner, mais dans le fait de se battre avec dignité.",
+        "author": "Harper Lee",
+        "reference": "Ne tirez pas sur l’oiseau moqueur",
+        "last_used_date": null
+    },
+    {
+        "text": "Cela faisait longtemps qu’elle n’avait pas regardé derrière elle. Car ce qu’elle laissait derrière était trop lourd, trop sombre. Mais aujourd’hui, elle tourna la tête. Elle vit ce qu’elle avait perdu, ce qu’elle avait aimé, ce qu’elle avait sacrifié. Et dans cet instant, elle comprit que survivre, c’était affronter ce passé, pas l’oublier.",
+        "author": "Toni Morrison",
+        "reference": "Beloved",
+        "last_used_date": null
+    },
+    {
+        "text": "Ce qu’il voulait, ce n’était pas seulement Daisy. C’était un rêve, une idée, une perfection qu’il avait construite autour d’elle. Daisy n’était qu’un symbole. Gatsby avait passé sa vie à courir après ce rêve, à croire qu’il pouvait le recréer. Mais le passé, même avec toute la volonté du monde, ne peut jamais être retrouvé.",
+        "author": "F. Scott Fitzgerald",
+        "reference": "Gatsby le Magnifique",
+        "last_used_date": null
+    },
+    {
+        "text": "La liberté, c’était cette rivière. Pas les villes, ni les routes, ni les champs. Juste cette étendue infinie d’eau qui portait Jim et moi, loin de tout ce qui nous avait emprisonnés. Je me sentais libre pour la première fois, et je savais que c’était là que je devais être.",
+        "author": "Mark Twain",
+        "reference": "Les Aventures de Huckleberry Finn",
+        "last_used_date": null
+    },
+    {
+        "text": "La question qui s’imposait à moi était simple : \"Qu’est-ce que la vie, et pourquoi dois-je vivre ?\" Je me rendais compte que tout ce que j’avais accumulé en connaissances et en expériences ne répondait pas à cette question.",
+        "author": "Léon Tolstoï",
+        "reference": "Ma Confession",
+        "last_used_date": null
+    },
+    {
+        "text": "Nous sommes si peu maîtres de nos sentiments que ce que nous désirons le plus souvent n’est pas ce que nous aimons vraiment, mais seulement ce que nous imaginons aimer.",
+        "author": "Léon Tolstoï",
+        "reference": "Anna Karénine",
+        "last_used_date": null
+    },
+    {
+        "text": "Chacun veut changer l’humanité, mais personne ne pense à se changer lui-même.",
+        "author": "Léon Tolstoï",
+        "reference": "Pensées pour chaque jour",
+        "last_used_date": null
+    },
+    {
+        "text": "Pierre se rendit compte que la liberté n’était pas de faire ce qu’il voulait, mais de ne pas désirer ce qu’il ne pouvait pas avoir. Il découvrait que la vraie liberté résidait dans l’acceptation, et non dans la lutte.",
+        "author": "Léon Tolstoï",
+        "reference": "La Guerre et la Paix",
+        "last_used_date": null
+    },
+    {
+        "text": "L’amour que je ressentais pour elle n’était pas celui que les poètes célèbrent, mais un amour quotidien, patient, un amour qui se bâtit sur les petites choses, sur les regards échangés, sur les silences partagés. C’était un amour vrai.",
+        "author": "Léon Tolstoï",
+        "reference": "Anna Karénine",
+        "last_used_date": null
+    },
+    {
+        "text": "Je cherchais des réponses dans les livres, dans la science, dans la religion. Mais les réponses les plus profondes ne se trouvent pas dans les mots. Elles se trouvent dans le cœur, dans le silence, dans la vie elle-même.",
+        "author": "Léon Tolstoï",
+        "reference": "Ma Confession",
+        "last_used_date": null
+    },
+    {
+        "text": "Jamais les triomphes les plus éclatants ne peuvent dédommager une nation de la perte d’une multitude de ses membres que la guerre sacrifie. Ses victoires même lui font des plaies profondes que la paix seule peut guérir.",
+        "author": "Denis Diderot",
+        "reference": "Écrits politiques ou Encyclopédie.",
+        "last_used_date": null
+    },
+    {
+        "text": "Qu’est-ce que l’homme, sinon un être capable de se convaincre que tout lui est permis ? Mais la véritable question n’est pas de savoir si tout est permis, mais si tout doit être fait. Car la liberté sans morale mène à la destruction, et la morale sans liberté n’est qu’une prison.",
+        "author": "Fiodor Dostoïevski",
+        "reference": "Les Frères Karamazov",
+        "last_used_date": null
+    },
+    {
+        "text": "L'homme est destiné à aller dans l'espace, à découvrir des mondes, à conquérir les cieux. La science ne connaît pas d'obstacles que le courage et la persévérance ne puissent surmonter.",
+        "author": "Jules Verne",
+        "reference": "De la Terre à la Lune",
+        "last_used_date": null
+    },
+    {
+        "text": "La nature n’est pas injuste. Elle récompense le travail, elle récompense l’audace. Mais elle punit aussi ceux qui la défient sans comprendre ses lois.",
+        "author": "Jules Vernes",
+        "reference": "Les Enfants du Capitaine Grant",
+        "last_used_date": null
+    },
+    {
+        "text": "Ce n’est pas la machine qui est dangereuse, mais l’homme qui en perd le contrôle. La technologie n’est qu’un outil ; elle devient un monstre si elle n’est pas guidée par la sagesse.",
+        "author": "Jules Verne",
+        "reference": "Maître du monde",
+        "last_used_date": null
+    },
+    {
+        "text": "Le monde est bien petit quand on le parcourt à toute vapeur ! Mais, pour Phileas Fogg, ce voyage n’était pas un simple défi contre le temps ; il était aussi une quête de l’ordre et de la précision. Chaque minute, chaque seconde, était pour lui une victoire. Cependant, en traversant les continents et les mers, Fogg comprit quelque chose d’inattendu : le monde n’était pas seulement une mécanique bien huilée ; il était vivant, rempli de couleurs, de visages, et d’histoires. Et ces découvertes allaient changer un homme que tout semblait incapable d’émouvoir.",
+        "author": "Jules Verne",
+        "reference": "Le Tour du Monde en 80 Jours",
+        "last_used_date": null
+    },
+    {
+        "text": "Mary Grant regardait l’horizon avec une détermination farouche. Elle ne voyait pas seulement un vaste océan ; elle voyait une promesse, celle de retrouver son père. Chaque vague semblait lui murmurer un encouragement, chaque étoile une direction à suivre. Paganel, toujours avec un livre en main, lui disait : \"Ne perdez jamais espoir, Mary. Le monde est vaste, mais il est aussi plein de coïncidences miraculeuses. Votre courage guidera notre route bien plus sûrement que n’importe quelle carte.\" Et elle le croyait, car dans son cœur, elle portait une foi inébranlable.",
+        "author": "Jules Verne",
+        "reference": "Les Enfants du Capitaine Grant",
+        "last_used_date": null
+    },
+    {
+        "text": "Le château se dressait, solitaire, enveloppé de mystères. Les villageois murmuraient des légendes effrayantes, mais Franz de Télek ne voyait là qu’une énigme à résoudre. \"La peur,\" disait-il, \"n’est qu’un écran qui masque la vérité. Derrière chaque phénomène étrange se cache une explication rationnelle, une vérité qui attend d’être dévoilée.\" Mais alors qu’il s’approchait du château, il sentait un frisson inexplicable : et si certaines vérités étaient faites pour rester cachées ?",
+        "author": "Jules Verne",
+        "reference": "Le Château des Carpathes",
+        "last_used_date": null
+    },
+    {
+        "text": "Robur parlait avec une passion presque dévorante. \"L’homme a appris à voler. Il ne rampera plus jamais sur la terre comme un insecte. Il dominera les cieux, il atteindra les étoiles. Mais avec ce pouvoir vient une grande responsabilité. Car si nous utilisons la science pour dominer, nous serons les auteurs de notre propre perte. La science doit être guidée par la sagesse, ou elle deviendra notre pire ennemi.\" Ces paroles, prophétiques, résonnaient comme un avertissement pour les générations futures.",
+        "author": "Jules Verne",
+        "reference": "Robur-le-Conquérant",
+        "last_used_date": null
+    },
+    {
+        "text": "Phileas Fogg avait calculé son voyage comme un horloger règle une montre. Mais à chaque étape, le monde semblait défier ses plans. Les imprévus n’étaient pas seulement des obstacles, mais des révélations. Ils montraient que, parfois, le cœur humain compte plus que la logique la plus rigoureuse. À mesure que Fogg découvrait des paysages nouveaux et rencontrait des âmes différentes de la sienne, il comprenait qu’un voyage n’est pas qu’une question de distance parcourue, mais aussi une transformation intérieure.",
+        "author": "Le Tour du Monde en 80 Jours",
+        "reference": "Jules Verne",
+        "last_used_date": null
+    }
 ]
