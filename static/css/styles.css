@@ -28,6 +28,14 @@ h1 {
     max-width: 600px;
 }
 
+#quote-container p:first-child {
+    font-family: 'Dancing Script', cursive;
+    font-size: 1.8rem;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+
 #rating-container, #comment-container, #average-rating, #share-buttons {
     margin-top: 20px;
     text-align: center;
@@ -77,4 +85,29 @@ button {
 
 button:hover {
     background-color: #ff9671;
+}
+
+.comment {
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 10px;
+    margin: 10px 0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s;
+}
+
+.comment:hover {
+    transform: scale(1.02);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+footer {
+    text-align: center;
+    padding: 10px;
+    background: #5c5f97;
+    color: white;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
 }
