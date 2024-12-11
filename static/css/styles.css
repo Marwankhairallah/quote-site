@@ -6,7 +6,9 @@ body {
     min-height: 100vh;
     display: flex;
     flex-direction: column;
+    overflow-x: hidden; /* Empêche le scroll horizontal */
 }
+
 
 h1 {
     font-family: 'Dancing Script', cursive;
