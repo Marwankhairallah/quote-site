@@ -6,8 +6,6 @@ body {
     min-height: 100vh;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
 }
 
 h1 {
@@ -27,14 +25,6 @@ h1 {
     text-align: center;
     max-width: 600px;
 }
-
-#quote-container p:first-child {
-    font-family: 'Dancing Script', cursive;
-    font-size: 1.8rem;
-    color: #333;
-    margin-bottom: 10px;
-}
-
 
 #rating-container, #comment-container, #average-rating, #share-buttons {
     margin-top: 20px;
@@ -107,7 +97,12 @@ footer {
     padding: 10px;
     background: #5c5f97;
     color: white;
-    position: absolute;
-    bottom: 0;
     width: 100%;
+    position: relative; /* Ajouté pour corriger l'affichage du footer */
+    bottom: 0;
+    flex-shrink: 0; /* Empêche le footer de rétrécir */
+}
+
+#app {
+    flex: 1; /* Permet au contenu de s'étendre pour pousser le footer en bas */
 }
