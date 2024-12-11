@@ -4,7 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Au fil des mots</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Dancing+Script&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="static/css/styles.css">
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 </head>
 <body>
     <div id="notification" style="display: none;"></div>
@@ -39,7 +41,6 @@
         <h1>Au fil des mots</h1>
         <div id="quote-container">
             <p>Chargement de la citation...</p>
-
         </div>
         <div id="share-buttons">
             <img src="static/images/whatsapp.png" alt="Partager sur WhatsApp" title="Partager sur WhatsApp" onclick="shareOnWhatsApp()">
@@ -47,12 +48,9 @@
             <img src="static/images/facebook.png" alt="Partager sur Facebook" title="Partager sur Facebook" onclick="shareOnFacebook()">
             <img src="static/images/linkedin.png" alt="Partager sur LinkedIn" title="Partager sur LinkedIn" onclick="shareOnLinkedIn()">
         </div>
-        
-        
-        
         <div id="rating-container">
+            <p>Notez cette citation :</p>
             <span class="stars">
-                <p>Notez cette citation :</p>
                 <span class="star" data-value="1">★</span>
                 <span class="star" data-value="2">★</span>
                 <span class="star" data-value="3">★</span>
@@ -60,7 +58,9 @@
                 <span class="star" data-value="5">★</span>
             </span>
         </div>
-                
+        <div id="average-rating">
+            <span class="average-stars">★★★★★</span> (4.5)
+        </div>
         <div id="comment-container">
             <textarea id="comment" placeholder="Votre commentaire..." disabled></textarea>
             <button id="submit-comment">Envoyer</button>
@@ -77,9 +77,5 @@
     <script type="module" src="static/js/rating.js"></script>
     <script type="module" src="static/js/share.js"></script>
     <script type="module" src="static/js/main.js"></script>
-
-
-
-
 </body>
 </html>

@@ -1,76 +1,40 @@
-/* Global Styling */
 body {
-    font-family: 'Roboto', Arial, sans-serif;
+    font-family: 'Roboto', sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #f4f4f9;
-    color: #333;
+    background: linear-gradient(to right, #a8edea, #fed6e3);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
 h1 {
+    font-family: 'Dancing Script', cursive;
+    font-size: 3rem;
     text-align: center;
-    color: #222;
-    font-size: 2.5rem;
+    color: #5c5f97;
     margin: 20px 0;
 }
 
-/* Header */
-#auth-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px 20px;
-    background-color: #007BFF;
-    color: white;
-    font-size: 1.1rem;
-}
-
-#auth-buttons button, #logout-button {
-    background-color: #0056b3;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    padding: 8px 12px;
-    font-size: 1rem;
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
-
-#auth-buttons button:hover, #logout-button:hover {
-    background-color: #004494;
-}
-
-/* Quote Section */
 #quote-container {
-    max-width: 700px;
-    margin: 30px auto;
+    margin: 20px auto;
     padding: 20px;
-    background: white;
-    border-radius: 8px;
+    background: #fff;
+    border-radius: 12px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     text-align: center;
+    max-width: 600px;
 }
 
-#quote-container p {
-    font-size: 1.2rem;
-    line-height: 1.6;
-    color: #555;
-    margin-bottom: 10px;
-}
-
-#quote-container strong {
-    font-size: 1.1rem;
-    color: #007BFF;
-}
-
-/* Rating Section */
-#rating-container {
-    margin: 20px auto;
+#rating-container, #comment-container, #average-rating, #share-buttons {
+    margin-top: 20px;
     text-align: center;
 }
 
 .star {
-    font-size: 30px;
+    font-size: 2rem;
     color: gray;
     cursor: pointer;
     transition: color 0.3s, transform 0.2s;
@@ -78,95 +42,39 @@ h1 {
 
 .star.hovered, .star.selected {
     color: gold;
-}
-
-.star:hover {
     transform: scale(1.2);
 }
 
-/* Share Buttons */
-#share-buttons {
-    margin: 20px auto;
-    text-align: center;
-}
-
 #share-buttons img {
-    width: 50px;
-    height: 50px;
+    width: 40px;
+    height: 40px;
     margin: 0 10px;
-    cursor: pointer;
-    transition: transform 0.3s;
+    transition: transform 0.2s;
 }
 
 #share-buttons img:hover {
     transform: scale(1.2);
 }
 
-/* Comment Section */
-#comment-container {
-    max-width: 700px;
-    margin: 20px auto;
-    text-align: center;
-}
-
 textarea {
-    width: 100%;
-    height: 100px;
+    width: 80%;
     padding: 10px;
     border: 1px solid #ddd;
     border-radius: 4px;
-    font-size: 1rem;
     margin-bottom: 10px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-textarea:focus {
-    outline: none;
-    border-color: #007BFF;
-    box-shadow: 0 2px 6px rgba(0, 123, 255, 0.3);
+    resize: none;
 }
 
 button {
     padding: 10px 20px;
-    background-color: #007BFF;
+    background-color: #ff6f61;
     color: white;
     border: none;
     border-radius: 4px;
-    font-size: 1rem;
     cursor: pointer;
     transition: background-color 0.3s;
 }
 
 button:hover {
-    background-color: #0056b3;
-}
-
-/* Comments List */
-#comments {
-    max-width: 700px;
-    margin: 20px auto;
-    padding: 10px;
-    background: white;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-.comment {
-    padding: 10px 15px;
-    border-bottom: 1px solid #ddd;
-}
-
-.comment:last-child {
-    border-bottom: none;
-}
-
-.comment p {
-    margin: 5px 0;
-    font-size: 1rem;
-    color: #333;
-}
-
-.comment small {
-    font-size: 0.9rem;
-    color: #888;
+    background-color: #ff9671;
 }
